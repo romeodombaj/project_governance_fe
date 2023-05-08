@@ -1,0 +1,6 @@
+.wrapper {
+  width: 80%;
+  height: 100vh;
+  background-color: gray;
+  z-index: 0;
+}
