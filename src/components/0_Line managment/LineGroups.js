@@ -1,5 +1,6 @@
 import styles from "./LineGroups.module.css";
 import { useEffect, useState } from "react";
+import useGetData from "../hooks/use-get-data";
 
 const gropList = [
   {
@@ -17,13 +18,7 @@ const gropList = [
 ];
 
 const LineGroups = () => {
-  const [workGroupList, setWorkGroupList] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:5002/line_managment/work_groups")
-      .then((response) => response.json())
-      .then((data) => setWorkGroupList(data));
-  }, []);
+  let workGroupList = useGetData("line_managment/work_groups");
 
   return (
     <div className={styles.wrapper}>
@@ -31,7 +26,7 @@ const LineGroups = () => {
       <div>Search Groups</div>
       <div className={styles[`group-list`]}>
         {workGroupList.map((group) => {
-          return <div key={group.id}>{group.name}</div>;
+          return <div key={group._id}>{group.name}</div>;
         })}
       </div>
     </div>

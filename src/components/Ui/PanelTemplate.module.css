@@ -1,0 +1,12 @@
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.panel-wrapper {
+  width: 80%;
+  height: 100vh;
+  background-color: gray;
+}
