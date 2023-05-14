@@ -28,14 +28,20 @@
   justify-content: center;
   align-items: center;
   border-radius: 1rem;
-  background-color: rgb(75, 75, 75);
+  background-color: #2a2b30;
   color: white;
   font-weight: bold;
   cursor: pointer;
+  transition: 0.2s;
+  box-shadow: 2px 2px 10px black;
 }
 
 .add-button:hover {
-  background-color: rgba(75, 75, 75, 0.572);
+  background-color: #2a2b30b6;
+}
+
+.add-button:active {
+  background-color: #1b1b1e;
 }
 
 .project-list {
@@ -43,27 +49,28 @@
   padding: 1rem;
   margin: auto;
   display: grid;
-  grid-template-columns: auto auto auto auto auto;
-  row-gap: 1rem;
-  column-gap: 1rem;
-  background-color: rgb(75, 75, 75);
+  grid-template-columns: 19% 19% 19% 19% 19%;
+  column-gap: 1.25%;
+  background-color: rgb(138, 138, 138);
   border-radius: 1rem 1rem 0 0;
   height: 70vh;
+  box-shadow: 0px 0px 10px rgb(34, 34, 34);
+  overflow-y: scroll;
 }
 
 .project-wrapper {
   width: 100%;
   aspect-ratio: 1;
-  background-color: aliceblue;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 0.5rem;
-  background-color: gray;
+  background-color: #2a2b30;
   opacity: 0.5;
   transition: 0.2s;
   cursor: pointer;
+  color: white;
 }
 
 .project-wrapper:hover {

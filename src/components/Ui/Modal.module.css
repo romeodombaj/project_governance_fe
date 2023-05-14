@@ -9,12 +9,12 @@
 
 .wrapper {
   position: fixed;
-  width: 50%;
-  height: 50%;
+  width: 70%;
+  height: 80%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgb(219, 240, 181);
+  background-color: #35363e;
   padding: 2rem;
   border-radius: 0.5rem;
   z-index: 1000;

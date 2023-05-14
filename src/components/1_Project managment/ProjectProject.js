@@ -4,7 +4,7 @@ import useGetData from "../hooks/use-get-data";
 import NewProjectWindow from "./NewProjectWindow";
 
 const ProjectProject = () => {
-  const [isCreatingNew, setIsCreatingNew] = useState(true);
+  const [isCreatingNew, setIsCreatingNew] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   let projectList = useGetData("project_managment/projects");
 

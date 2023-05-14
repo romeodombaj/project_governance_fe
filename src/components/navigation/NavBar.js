@@ -53,6 +53,12 @@ const NavBar = () => {
             </Link>
           );
         })}
+
+      <hr className={styles.separator} />
+
+      <div className={styles[`open-elements`]}>
+        <div>PROJECT1</div>
+      </div>
     </div>
   );
 };
