@@ -1,12 +1,15 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useState, useContext } from "react";
 import styles from "./ProjectProject.module.css";
 import useGetData from "../hooks/use-get-data";
 import NewProjectWindow from "./NewProjectWindow";
+import NavigationContext from "../store/navigation-context";
 
 const ProjectProject = () => {
   const [isCreatingNew, setIsCreatingNew] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   let projectList = useGetData("project_managment/projects");
+
+  const navCtx = useContext(NavigationContext);
 
   const onSearchHandler = (event) => {
     setSearchValue(event.target.value);
@@ -18,6 +21,10 @@ const ProjectProject = () => {
 
   const onCloseNewProject = () => {
     setIsCreatingNew(false);
+  };
+
+  const openProject = (event) => {
+    navCtx.addToOpen(event.target.getAttribute("value"));
   };
 
   return (
@@ -38,7 +45,12 @@ const ProjectProject = () => {
           {projectList.map((project) => {
             if (project.name.includes(searchValue)) {
               return (
-                <div className={styles[`project-wrapper`]} key={project._id}>
+                <div
+                  onClick={openProject}
+                  className={styles[`project-wrapper`]}
+                  key={project._id}
+                  value={project.name}
+                >
                   {project.name}
                 </div>
               );

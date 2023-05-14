@@ -57,7 +57,10 @@ const NavBar = () => {
       <hr className={styles.separator} />
 
       <div className={styles[`open-elements`]}>
-        <div>PROJECT1</div>
+        {navCtx.openList &&
+          navCtx.openList.map((object) => {
+            return <div className={styles[`open-element`]}>{object.name}</div>;
+          })}
       </div>
     </div>
   );
