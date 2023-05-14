@@ -1,9 +1,10 @@
 import { Fragment, useEffect, useState } from "react";
 import styles from "./ProjectProject.module.css";
 import useGetData from "../hooks/use-get-data";
+import NewProjectWindow from "./NewProjectWindow";
 
 const ProjectProject = () => {
-  const [isCreatingNew, setIsCreatingNew] = useState(false);
+  const [isCreatingNew, setIsCreatingNew] = useState(true);
   const [searchValue, setSearchValue] = useState("");
   let projectList = useGetData("project_managment/projects");
 
@@ -11,9 +12,17 @@ const ProjectProject = () => {
     setSearchValue(event.target.value);
   };
 
+  const onCreateNewProject = () => {
+    setIsCreatingNew(true);
+  };
+
+  const onCloseNewProject = () => {
+    setIsCreatingNew(false);
+  };
+
   return (
     <Fragment>
-      {}
+      {isCreatingNew && <NewProjectWindow onClose={onCloseNewProject} />}
       <div className={styles.wrapper}>
         <div className={styles[`project-actions-wrapper`]}>
           <input
@@ -21,7 +30,9 @@ const ProjectProject = () => {
             onChange={onSearchHandler}
             value={searchValue}
           ></input>
-          <div className={styles[`add-button`]}>Add project</div>
+          <div onClick={onCreateNewProject} className={styles[`add-button`]}>
+            Add project
+          </div>
         </div>
         <div className={styles[`project-list`]}>
           {projectList.map((project) => {
