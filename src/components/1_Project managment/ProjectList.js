@@ -48,20 +48,21 @@ const ProjectList = () => {
           </div>
         </div>
         <div className={styles[`project-list`]}>
-          {projectList.map((project) => {
-            if (project.name.includes(searchValue)) {
-              return (
-                <div
-                  onClick={openProject}
-                  className={styles[`project-wrapper`]}
-                  key={project._id}
-                  value={project._id}
-                >
-                  {project.name}
-                </div>
-              );
-            }
-          })}
+          {projectList &&
+            projectList.map((project) => {
+              if (project.name.includes(searchValue)) {
+                return (
+                  <div
+                    onClick={openProject}
+                    className={styles[`project-wrapper`]}
+                    key={project._id}
+                    value={project._id}
+                  >
+                    {project.name}
+                  </div>
+                );
+              }
+            })}
         </div>
       </div>
     </Fragment>

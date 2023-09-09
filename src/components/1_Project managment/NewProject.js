@@ -15,7 +15,9 @@ const NewProject = (props) => {
     setName(event.target.value);
   };
 
-  const onSubmitHandler = () => {
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+
     if (name.length > 0) {
       const data = {
         name: name,
@@ -24,8 +26,6 @@ const NewProject = (props) => {
           featureImportance: "",
         },
       };
-
-      console.log(data);
       postData(data);
 
       props.onClose();
@@ -37,12 +37,13 @@ const NewProject = (props) => {
   return (
     <Modal onClose={props.onClose}>
       <div className={styles.wrapper}>
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={onSubmitHandler}>
           <label className={styles.label}>Project Name</label>
           <Input onChange={onNameChange} value={name} error={error} />
+          <div className={styles["separator"]} />
+          <Button type="submit">Add new project</Button>
         </form>
 
-        <Button onClick={onSubmitHandler}>Add new project</Button>
         {/*
         <form className={styles[`info-form`]}>
           <div className={styles[`form-section`]}>

@@ -2,9 +2,13 @@ import styles from "./Button.module.css";
 
 const Button = (props) => {
   return (
-    <div onClick={props.onClick} className={styles.wrapper}>
+    <button
+      type={props.type}
+      onClick={props.onClick}
+      className={styles.wrapper}
+    >
       {props.children}
-    </div>
+    </button>
   );
 };
 
