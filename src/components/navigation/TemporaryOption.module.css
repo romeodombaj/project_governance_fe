@@ -1,0 +1,29 @@
+.wrapper {
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
+  cursor: pointer;
+  padding: 1rem 0rem;
+  width: 85%;
+  border-radius: 0.5rem;
+  background-color: rgb(var(--mid-background-color));
+  text-transform: capitalize;
+  font-size: 1.2em;
+  transition: 0.4s;
+}
+
+.wrapper-hover {
+  border-radius: 2.5rem;
+  font-size: 0em;
+}
+
+.wrapper::first-letter {
+  font-size: 3rem;
+}
+
+.selected {
+  background-color: rgb(var(--highlight-color), 0.3);
+}
+
+.wrapper:hover {
+  background-color: rgb(var(--highlight-color), 0.5);
+}

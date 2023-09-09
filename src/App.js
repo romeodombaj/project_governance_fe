@@ -7,8 +7,9 @@ import LineGroups from "./components/0_Line managment/LineGroups";
 import LineEmployees from "./components/0_Line managment/LineEmployees";
 import ProjectManagmentPanel from "./components/1_Project managment/ProjectManagmentPanel";
 import ProcessManagmentPanel from "./components/2_Process magment/ProcessManagmentPanel";
-import ProjectProject from "./components/1_Project managment/ProjectProject";
+import ProjectProjects from "./components/1_Project managment/ProjectList";
 import ProcessFeatures from "./components/2_Process magment/ProcessFeatures";
+import Project from "./components/1_Project managment/SingleProject/Project";
 
 const navOptions = [
   {
@@ -53,7 +54,8 @@ function App() {
           <Route path="employees" element={<LineEmployees />} />
         </Route>
         <Route path="/project" element={<ProjectManagmentPanel />}>
-          <Route path="projects" element={<ProjectProject />} />
+          <Route path="projects" element={<ProjectProjects />} />
+          <Route path=":projectName" element={<Project />} />
         </Route>
         <Route path="/process" element={<ProcessManagmentPanel />}>
           <Route path="features" element={<ProcessFeatures />} />

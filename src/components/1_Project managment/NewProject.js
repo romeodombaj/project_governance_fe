@@ -1,12 +1,13 @@
-import styles from "./NewProjectWindow.module.css";
+import styles from "./NewProject.module.css";
 import Modal from "../Ui/Modal";
 import usePostData from "../hooks/use-post-data";
 import { useState } from "react";
+import Button from "../Ui/Button";
+import Input from "../Ui/Input";
 
-const NewProjectWindow = (props) => {
+const NewProject = (props) => {
   const [name, setName] = useState("");
-  const [featureName, setFeatureName] = useState("");
-  const [featureImportance, setFeatureImportance] = useState(0);
+  const [error, setError] = useState(false);
 
   const postData = usePostData("project_managment/projects/add");
 
@@ -14,30 +15,35 @@ const NewProjectWindow = (props) => {
     setName(event.target.value);
   };
 
-  const onFeatureNameChange = (event) => {
-    setFeatureName(event.target.value);
-  };
-
-  const onFeatureImportanceChange = (event) => {
-    setFeatureImportance(event.target.value);
-  };
-
   const onSubmitHandler = () => {
-    const data = {
-      name: name,
-      feature: {
-        featureName: featureName,
-        featureImportance: featureImportance,
-      },
-    };
-    postData(data);
+    if (name.length > 0) {
+      const data = {
+        name: name,
+        feature: {
+          featureName: "",
+          featureImportance: "",
+        },
+      };
 
-    props.onClose();
+      console.log(data);
+      postData(data);
+
+      props.onClose();
+    } else {
+      setError(true);
+    }
   };
 
   return (
     <Modal onClose={props.onClose}>
-      <div>
+      <div className={styles.wrapper}>
+        <form className={styles.form}>
+          <label className={styles.label}>Project Name</label>
+          <Input onChange={onNameChange} value={name} error={error} />
+        </form>
+
+        <Button onClick={onSubmitHandler}>Add new project</Button>
+        {/*
         <form className={styles[`info-form`]}>
           <div className={styles[`form-section`]}>
             <label>Project Name:</label>
@@ -67,9 +73,10 @@ const NewProjectWindow = (props) => {
         <button className={styles.submit} onClick={onSubmitHandler}>
           SUBMIT
         </button>
+        */}
       </div>
     </Modal>
   );
 };
 
-export default NewProjectWindow;
+export default NewProject;

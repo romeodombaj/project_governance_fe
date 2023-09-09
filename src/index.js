@@ -8,11 +8,11 @@ import NavigationProvider from "./components/store/NavigationProvider";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <NavigationProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <NavigationProvider>
         <App />
-      </BrowserRouter>
-    </NavigationProvider>
+      </NavigationProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

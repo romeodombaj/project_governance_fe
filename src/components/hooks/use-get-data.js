@@ -6,7 +6,9 @@ const useGetData = (path) => {
   useEffect(() => {
     fetch(`http://localhost:5000/${path}`)
       .then((response) => response.json())
-      .then((data) => setDataList(data));
+      .then((data) => {
+        setDataList(data);
+      });
   }, []);
 
   return dataList;
