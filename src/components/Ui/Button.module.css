@@ -1,5 +1,4 @@
 .wrapper {
-  margin: auto;
   background-color: rgb(var(--mid-background-color));
   width: fit-content;
   padding: 1rem 2rem;

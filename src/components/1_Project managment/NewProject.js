@@ -4,6 +4,7 @@ import usePostData from "../hooks/use-post-data";
 import { useState } from "react";
 import Button from "../Ui/Button";
 import Input from "../Ui/Input";
+import Label from "../Ui/Label";
 
 const NewProject = (props) => {
   const [name, setName] = useState("");
@@ -38,7 +39,7 @@ const NewProject = (props) => {
     <Modal onClose={props.onClose}>
       <div className={styles.wrapper}>
         <form className={styles.form} onSubmit={onSubmitHandler}>
-          <label className={styles.label}>Project Name</label>
+          <Label>Project Name</Label>
           <Input onChange={onNameChange} value={name} error={error} />
           <div className={styles["separator"]} />
           <Button type="submit">Add new project</Button>

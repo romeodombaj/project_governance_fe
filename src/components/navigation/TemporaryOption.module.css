@@ -9,11 +9,14 @@
   text-transform: capitalize;
   font-size: 1.2em;
   transition: 0.4s;
+  transition-delay: 0;
 }
 
 .wrapper-hover {
   border-radius: 2.5rem;
   font-size: 0em;
+  transition: 0.4s;
+  transition-delay: 0.4s;
 }
 
 .wrapper::first-letter {

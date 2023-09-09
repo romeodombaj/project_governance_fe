@@ -1,5 +1,8 @@
 import { useParams, useLocation } from "react-router-dom";
 import styles from "./Project.module.css";
+import ProjectInfo from "./ProjectInfo";
+import ProjectFeatures from "./ProjectFeatures";
+import FeatureForm from "./FeatureForm";
 
 const Project = () => {
   const id = useParams().projectName;
@@ -11,7 +14,13 @@ const Project = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.title}>{projectData.name}</div>
-      <div className={styles[`feature-list`]}>
+      <div className={styles.main}>
+        <ProjectInfo projectData={projectData} />
+        <ProjectFeatures />
+        <FeatureForm />
+      </div>
+
+      {/*<div className={styles[`feature-list`]}>
         {projectData.features &&
           projectData.features.map((feature) => {
             return <div className={styles.feature}>{feature}</div>;
@@ -20,6 +29,7 @@ const Project = () => {
           ADD
         </div>
       </div>
+      */}
     </div>
   );
 };

@@ -2,11 +2,19 @@
   height: 100vh;
 }
 
+.main {
+  display: flex;
+  flex-direction: row;
+  height: 90vh;
+  padding: 2rem;
+}
+
 .title {
   margin-top: 2rem;
   color: white;
   font-size: 2em;
   text-transform: capitalize;
+  margin-bottom: 2rem;
 }
 
 .feature-list {
