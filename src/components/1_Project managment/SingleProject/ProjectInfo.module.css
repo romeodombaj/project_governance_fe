@@ -1,6 +1,6 @@
 .wrapper {
   height: 50vh;
-  width: 30%;
+  width: calc(30% - 5rem);
   background-color: rgb(var(--light-background-color));
   border-radius: 2rem;
   padding: 2rem;

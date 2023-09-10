@@ -1,7 +1,7 @@
-const usePostData = () => {
-  const postData = async (data, path) => {
+const usePatchData = () => {
+  const patchData = async (data, path) => {
     const resp = await fetch(`http://localhost:5000/${path}`, {
-      method: "POST",
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
@@ -13,7 +13,7 @@ const usePostData = () => {
     return await resp;
   };
 
-  return postData;
+  return patchData;
 };
 
-export default usePostData;
+export default usePatchData;

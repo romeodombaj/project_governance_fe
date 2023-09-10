@@ -10,7 +10,8 @@ const NewProject = (props) => {
   const [name, setName] = useState("");
   const [error, setError] = useState(false);
 
-  const postData = usePostData("project_managment/projects/add");
+  const postData = usePostData();
+  const postPath = "project_managment/projects/add";
 
   const onNameChange = (event) => {
     setName(event.target.value);
@@ -27,7 +28,7 @@ const NewProject = (props) => {
           featureImportance: "",
         },
       };
-      postData(data);
+      postData(data, postPath);
 
       props.onClose();
     } else {
@@ -42,7 +43,9 @@ const NewProject = (props) => {
           <Label>Project Name</Label>
           <Input onChange={onNameChange} value={name} error={error} />
           <div className={styles["separator"]} />
-          <Button type="submit">Add new project</Button>
+          <Button isLight={true} type="submit">
+            Add new project
+          </Button>
         </form>
 
         {/*

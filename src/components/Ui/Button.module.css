@@ -1,5 +1,5 @@
 .wrapper {
-  background-color: rgb(var(--mid-background-color));
+  background-color: rgb(var(--dark-background-color));
   width: fit-content;
   padding: 1rem 2rem;
   border-radius: 0.25rem;
@@ -13,4 +13,8 @@
 .wrapper:hover {
   background-color: rgb(var(--highlight-color), 0.5);
   transition: 1s;
+}
+
+.light {
+  background-color: rgb(var(--mid-background-color));
 }

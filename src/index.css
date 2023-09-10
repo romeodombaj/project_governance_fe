@@ -8,13 +8,22 @@ body {
 }
 
 :root {
-  --dark-background-color: 42, 43, 48;
+  --dark-background-color: 3, 23, 17;
+  --mid-background-color: 13, 43, 35;
+  --light-background-color: 6, 66, 49;
+  --highlight-color: 8, 130, 38;
+  --light-text-color: 245, 245, 245;
+}
+6, 66, 49
+/*
+7, 79, 58;
+13, 43, 35
+--dark-background-color: 42, 43, 48;
   --mid-background-color: 88, 88, 88;
   --light-background-color: 138, 138, 138;
   --highlight-color: 8, 130, 38;
 
-  --light-text-color: 245, 245, 245;
-}
+  --light-text-color: 245, 245, 245;*/
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",

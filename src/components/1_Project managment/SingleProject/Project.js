@@ -17,7 +17,6 @@ const Project = () => {
       <div className={styles.main}>
         <ProjectInfo projectData={projectData} />
         <ProjectFeatures />
-        <FeatureForm />
       </div>
 
       {/*<div className={styles[`feature-list`]}>

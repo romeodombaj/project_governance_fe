@@ -1,17 +1,15 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-const useGetData = (path) => {
-  const [dataList, setDataList] = useState([]);
+const useGetData = () => {
+  const [data, setData] = useState([]);
 
-  useEffect(() => {
-    fetch(`http://localhost:5000/${path}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setDataList(data);
-      });
-  }, []);
+  const getData = async (path) => {
+    let response = await fetch(`http://localhost:5000/${path}`);
+    let value = await response.json();
+    setData(await value);
+  };
 
-  return dataList;
+  return [data, getData];
 };
 
 export default useGetData;

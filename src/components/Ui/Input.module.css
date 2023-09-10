@@ -5,6 +5,7 @@
   border: 3px solid rgb(var(--highlight-color), 0);
   transition: 0.2s;
   background-color: rgb(var(--light-text-color));
+  width: 100%;
 }
 
 .wrapper:focus {

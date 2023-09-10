@@ -5,7 +5,7 @@ const Button = (props) => {
     <button
       type={props.type}
       onClick={props.onClick}
-      className={styles.wrapper}
+      className={`${styles.wrapper} ${styles[props.isLight && "light"]}`}
     >
       {props.children}
     </button>

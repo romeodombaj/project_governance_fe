@@ -8,7 +8,8 @@ import Project from "./SingleProject/Project";
 const ProjectList = () => {
   const [isCreatingNew, setIsCreatingNew] = useState(false);
   const [searchValue, setSearchValue] = useState("");
-  let projectList = useGetData("project_managment/projects");
+
+  const [projectList, getProjects] = useGetData();
 
   const navCtx = useContext(NavigationContext);
 
@@ -32,6 +33,10 @@ const ProjectList = () => {
       "project"
     );
   };
+
+  useEffect(() => {
+    getProjects("project_managment/projects");
+  }, []);
 
   return (
     <Fragment>
