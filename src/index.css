@@ -14,7 +14,6 @@ body {
   --highlight-color: 8, 130, 38;
   --light-text-color: 245, 245, 245;
 }
-6, 66, 49
 /*
 7, 79, 58;
 13, 43, 35
@@ -44,6 +43,7 @@ input[type="reset"] {
 
 ::-webkit-scrollbar {
   width: 5px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-track {

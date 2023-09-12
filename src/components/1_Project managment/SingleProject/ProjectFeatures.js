@@ -5,6 +5,7 @@ import FeatureElement from "./FeatureElement";
 import { Fragment, useEffect, useState } from "react";
 import FeatureForm from "./FeatureForm";
 import useGetData from "../../hooks/use-get-data";
+import usePostData from "../../hooks/use-post-data";
 
 const ProjectFeatures = (props) => {
   const projectData = props.projectData;
@@ -21,6 +22,7 @@ const ProjectFeatures = (props) => {
   });
 
   const [featureList, getFeatures] = useGetData();
+  const postData = usePostData();
 
   const editFeature = (feature, id) => {
     closeForm();
@@ -59,10 +61,13 @@ const ProjectFeatures = (props) => {
     setIsCreating(false);
   };
 
+  const generateCritical = () => {
+    postData("", "project_managment/critical_paths/add");
+  };
+
   useEffect(() => {
     if (!isCreating) {
-      console.log("fetch");
-      getFeatures("process_managment/features");
+      getFeatures(`process_managment/features/by_project/${projectData._id}`);
     }
   }, [isCreating]);
 
@@ -90,9 +95,15 @@ const ProjectFeatures = (props) => {
 
           <Button onClick={addFeature}>Add Feature</Button>
         </div>
+        <Button onClick={generateCritical}>GENERATEE CRITICAL PATH</Button>
       </div>
       {isCreating && (
-        <FeatureForm editData={editData} onClose={closeForm} edit={isEditing} />
+        <FeatureForm
+          editData={editData}
+          onClose={closeForm}
+          edit={isEditing}
+          projectData={projectData}
+        />
       )}
     </Fragment>
   );

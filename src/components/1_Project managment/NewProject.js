@@ -23,10 +23,6 @@ const NewProject = (props) => {
     if (name.length > 0) {
       const data = {
         name: name,
-        feature: {
-          featureName: "",
-          featureImportance: "",
-        },
       };
       postData(data, postPath);
 

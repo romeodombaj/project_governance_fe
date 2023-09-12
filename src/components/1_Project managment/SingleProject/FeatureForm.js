@@ -24,6 +24,7 @@ const FeatureForm = (props) => {
     e.preventDefault();
 
     const data = {
+      projectId: props.projectData._id,
       name: name,
       conditions: conditions,
       duration: duration,
@@ -37,6 +38,7 @@ const FeatureForm = (props) => {
       });
     } else {
       const resp = await postData(data, postPath).then((resp) => {
+        console.log(resp);
         if (resp.ok) {
           props.onClose();
         }
@@ -45,7 +47,14 @@ const FeatureForm = (props) => {
   };
 
   const onFeatureDelete = async () => {
-    await deleteData(deletePath).then((resp) => {
+    const data = {
+      projectId: props.projectData._id,
+      name: name,
+      conditions: conditions,
+      duration: duration,
+    };
+
+    await deleteData(data, deletePath).then((resp) => {
       if (resp.ok) {
         console.log(resp);
         props.onClose();

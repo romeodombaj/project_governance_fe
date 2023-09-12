@@ -1,0 +1,21 @@
+.wrapper {
+  padding: 1rem 0rem;
+  background-color: rgb(var(--light-background-color), 0.4);
+  backdrop-filter: blur(3px);
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+.wrapper:hover {
+  background-color: rgb(var(--light-background-color), 0.6);
+}
+
+.done {
+  background-color: rgb(var(--highlight-color), 0.4);
+}
+
+.done:hover {
+  background-color: rgb(var(--highlight-color), 0.6);
+}

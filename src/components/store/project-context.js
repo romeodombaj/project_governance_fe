@@ -2,6 +2,7 @@ import React from "react";
 
 const ProjectContext = React.createContext({
   projectList: [],
-  addProject: [],
+  addProjectToList: () => {},
   getProjectData: () => {},
+  fetchProjectData: () => {},
 });
