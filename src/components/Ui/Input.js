@@ -5,7 +5,7 @@ const Input = (props) => {
     <input
       onChange={props.onChange}
       value={props.value}
-      className={`${styles.wrapper} ${styles[props.error && "error"]}`}
+      className={`${styles.wrapper} ${styles[props.error !== "" && "error"]}`}
     />
   );
 };

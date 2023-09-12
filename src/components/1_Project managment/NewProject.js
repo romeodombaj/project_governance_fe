@@ -5,10 +5,11 @@ import { useState } from "react";
 import Button from "../Ui/Button";
 import Input from "../Ui/Input";
 import Label from "../Ui/Label";
+import Error from "../Ui/Error";
 
 const NewProject = (props) => {
   const [name, setName] = useState("");
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
 
   const postData = usePostData();
   const postPath = "project_managment/projects/add";
@@ -24,57 +25,31 @@ const NewProject = (props) => {
       const data = {
         name: name,
       };
-      postData(data, postPath);
-
-      props.onClose();
+      postData(data, postPath).then((resp) => {
+        if (resp.ok) {
+          props.onClose();
+        }
+      });
     } else {
-      setError(true);
+      setError("Fill all the input fields");
     }
   };
 
   return (
     <Modal onClose={props.onClose}>
       <div className={styles.wrapper}>
+        <Error value={error} />
         <form className={styles.form} onSubmit={onSubmitHandler}>
           <Label>Project Name</Label>
+          <div className={styles["separator"]} />
           <Input onChange={onNameChange} value={name} error={error} />
           <div className={styles["separator"]} />
-          <Button isLight={true} type="submit">
-            Add new project
-          </Button>
-        </form>
-
-        {/*
-        <form className={styles[`info-form`]}>
-          <div className={styles[`form-section`]}>
-            <label>Project Name:</label>
-            <input onChange={onNameChange} value={name} />
+          <div className={styles["button-center"]}>
+            <Button isLight={true} type="submit">
+              Add new project
+            </Button>
           </div>
         </form>
-        <hr />
-        <div className={styles[`feature-section`]}>
-          <label>Features:</label>
-          <div className={styles.feature}>
-            <label>1.</label>
-            <div>
-              <label>Name: </label>
-              <input onChange={onFeatureNameChange} value={featureName} />
-            </div>
-            <div>
-              <label>Importance: </label>
-              <input
-                onChange={onFeatureImportanceChange}
-                value={featureImportance}
-              />
-            </div>
-          </div>
-        </div>
-
-        <div className={styles[`add-feature`]}>+</div>
-        <button className={styles.submit} onClick={onSubmitHandler}>
-          SUBMIT
-        </button>
-        */}
       </div>
     </Modal>
   );

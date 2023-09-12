@@ -38,4 +38,5 @@
   align-items: center;
   color: white;
   margin-bottom: 2rem;
+  overflow: auto;
 }

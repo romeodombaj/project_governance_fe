@@ -6,13 +6,15 @@ import usePostData from "../../hooks/use-post-data";
 import usePatchData from "../../hooks/use-patch-data";
 import { useEffect, useState } from "react";
 import useDeleteData from "../../hooks/use-delete-data";
+import Error from "../../Ui/Error";
 
 const FeatureForm = (props) => {
   const editData = props.editData.feature;
   const id = props.editData.id;
   const [name, setName] = useState(editData.name || "");
-  const [conditions, setCondidionts] = useState(editData.conditions || null);
+  const [conditions, setCondidionts] = useState(editData.conditions || "");
   const [duration, setDuration] = useState(editData.duration || "");
+  const [error, setError] = useState("");
   const postData = usePostData();
   const patchData = usePatchData();
   const deleteData = useDeleteData();
@@ -23,26 +25,30 @@ const FeatureForm = (props) => {
   const onFeatureSubmit = async (e) => {
     e.preventDefault();
 
-    const data = {
-      projectId: props.projectData._id,
-      name: name,
-      conditions: conditions,
-      duration: duration,
-    };
+    if (name.length > 0 && duration.length > 0) {
+      const data = {
+        projectId: props.projectData._id,
+        name: name,
+        conditions: conditions,
+        duration: duration,
+      };
 
-    if (props.edit) {
-      await patchData(data, patchPath).then((resp) => {
-        if (resp.ok) {
-          props.onClose();
-        }
-      });
+      if (props.edit) {
+        await patchData(data, patchPath).then((resp) => {
+          if (resp.ok) {
+            props.onClose();
+          }
+        });
+      } else {
+        const resp = await postData(data, postPath).then((resp) => {
+          console.log(resp);
+          if (resp.ok) {
+            props.onClose();
+          }
+        });
+      }
     } else {
-      const resp = await postData(data, postPath).then((resp) => {
-        console.log(resp);
-        if (resp.ok) {
-          props.onClose();
-        }
-      });
+      setError("Make sure to fill NAME and DURATION fields ");
     }
   };
 
@@ -88,6 +94,7 @@ const FeatureForm = (props) => {
   return (
     <div className={styles.wrapper}>
       <form className={styles.form} onSubmit={onFeatureSubmit}>
+        <Error value={error} />
         <div className={styles.section}>
           <Label>
             <div className={styles.font}>{id}</div>

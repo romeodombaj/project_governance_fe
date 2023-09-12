@@ -6,3 +6,30 @@
   padding: 2rem;
   margin: 0.5rem;
 }
+
+.info-section {
+  width: 100%;
+  padding: 0.5rem 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.info-predefined {
+  color: whitesmoke;
+  font-size: 1.1em;
+  margin-right: 2rem;
+}
+
+.info-line {
+  text-align: left;
+  padding: 1rem;
+  font-size: 1.3em;
+  color: rgb(var(--highlight-color));
+  font-weight: bold;
+}
+
+.separator {
+  height: 2rem;
+}

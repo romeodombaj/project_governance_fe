@@ -20,7 +20,7 @@ const Project = () => {
 
   useEffect(() => {
     getCriticalPath();
-  }, []);
+  }, [location.pathname]);
 
   useEffect(() => {
     console.log("CRITICAL");
@@ -35,7 +35,10 @@ const Project = () => {
       )}
 
       <div className={styles.main}>
-        <ProjectInfo projectData={projectData} />
+        <ProjectInfo
+          criticalPathStatus={criticalPathData[0]}
+          projectData={projectData}
+        />
         {criticalPathData[0] ? (
           <ProjectFeatures
             projectData={projectData}

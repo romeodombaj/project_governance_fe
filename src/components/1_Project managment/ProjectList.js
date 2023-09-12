@@ -4,6 +4,7 @@ import useGetData from "../hooks/use-get-data";
 import NewProjectWindow from "./NewProject";
 import NavigationContext from "../store/navigation-context";
 import Project from "./SingleProject/Project";
+import Input from "../Ui/Input";
 
 const ProjectList = () => {
   const [isCreatingNew, setIsCreatingNew] = useState(false);
@@ -35,19 +36,18 @@ const ProjectList = () => {
   };
 
   useEffect(() => {
-    getProjects("project_managment/projects");
-  }, []);
+    if (!isCreatingNew) getProjects("project_managment/projects");
+  }, [isCreatingNew]);
 
   return (
     <Fragment>
       {isCreatingNew && <NewProjectWindow onClose={onCloseNewProject} />}
       <div className={styles.wrapper}>
+        <div className={styles.title}>PROJECT MANAGMENT PANEL</div>
         <div className={styles[`project-actions-wrapper`]}>
-          <input
-            className={styles.search}
-            onChange={onSearchHandler}
-            value={searchValue}
-          ></input>
+          <div className={styles.search}>
+            <Input onChange={onSearchHandler} value={searchValue}></Input>
+          </div>
           <div onClick={onCreateNewProject} className={styles[`add-button`]}>
             Add project
           </div>

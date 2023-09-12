@@ -31,3 +31,6 @@
   margin-bottom: 1rem;
   text-transform: uppercase;
 }
+.button-center {
+  margin: auto;
+}

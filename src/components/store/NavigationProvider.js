@@ -35,14 +35,8 @@ const NavigationProvider = (props) => {
   };
 
   const removeFromOpen = (item, mainLocation) => {
-    console.log(item);
-
     const list = openList.filter((el) => el._id !== item._id);
-
-    console.log(list);
-
     setOpenList(list);
-
     navigate(mainLocation);
   };
 

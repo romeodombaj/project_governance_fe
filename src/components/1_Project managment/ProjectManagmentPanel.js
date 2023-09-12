@@ -19,7 +19,7 @@ const ProjectManagmentPanel = () => {
 
   return (
     <PanelTemplate>
-      <div>ProjectManagmentPanel</div>
+
       <Outlet />
     </PanelTemplate>
   );

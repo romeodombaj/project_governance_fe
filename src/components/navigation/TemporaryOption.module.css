@@ -34,7 +34,7 @@
 .name-hover {
   font-size: 0em;
   transition: 0.2s;
-  transform: translateX(105%);
+  margin-left: 3.5rem;
 }
 
 .name::first-letter {
