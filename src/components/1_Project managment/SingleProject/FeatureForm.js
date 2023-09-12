@@ -11,7 +11,7 @@ const FeatureForm = (props) => {
   const editData = props.editData.feature;
   const id = props.editData.id;
   const [name, setName] = useState(editData.name || "");
-  const [conditions, setCondidionts] = useState(editData.conditions || "");
+  const [conditions, setCondidionts] = useState(editData.conditions || null);
   const [duration, setDuration] = useState(editData.duration || "");
   const postData = usePostData();
   const patchData = usePatchData();

@@ -6,6 +6,7 @@ const CriticalPathWindow = (props) => {
   let columns = [];
   let max = 0;
 
+
   if (criticalPathData) {
     max = Math.max(
       ...criticalPathData.calculatedArray.map((el) => el.lastFinishTime)

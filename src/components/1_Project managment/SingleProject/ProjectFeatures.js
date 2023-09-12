@@ -6,6 +6,7 @@ import { Fragment, useEffect, useState } from "react";
 import FeatureForm from "./FeatureForm";
 import useGetData from "../../hooks/use-get-data";
 import usePostData from "../../hooks/use-post-data";
+import useDeleteData from "../../hooks/use-delete-data";
 
 const ProjectFeatures = (props) => {
   const projectData = props.projectData;
@@ -23,6 +24,7 @@ const ProjectFeatures = (props) => {
 
   const [featureList, getFeatures] = useGetData();
   const postData = usePostData();
+  const deleteData = useDeleteData();
 
   const editFeature = (feature, id) => {
     closeForm();
@@ -61,8 +63,19 @@ const ProjectFeatures = (props) => {
     setIsCreating(false);
   };
 
-  const generateCritical = () => {
-    postData("", "project_managment/critical_paths/add");
+  const generateCritical = async () => {
+    const data = {
+      ...featureList,
+    };
+    console.log(props.criticalPathId);
+
+    const criticalId = props.criticalPathId;
+    if (criticalId !== undefined) {
+      deleteData("", `project_managment/critical_paths/delete/${criticalId}`);
+    }
+
+    await postData(data, "project_managment/critical_paths/add");
+    props.getCriticalPath();
   };
 
   useEffect(() => {
@@ -70,10 +83,6 @@ const ProjectFeatures = (props) => {
       getFeatures(`process_managment/features/by_project/${projectData._id}`);
     }
   }, [isCreating]);
-
-  useEffect(() => {
-    console.log(featureList);
-  }, [featureList]);
 
   return (
     <Fragment>

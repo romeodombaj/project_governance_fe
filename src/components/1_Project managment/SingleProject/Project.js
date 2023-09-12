@@ -14,24 +14,41 @@ const Project = () => {
 
   const [criticalPathData, getCriticalPathData] = useGetData();
 
+  const getCriticalPath = () => {
+    getCriticalPathData(`project_managment/critical_paths/${projectData._id}`);
+  };
+
   useEffect(() => {
-    getCriticalPathData("project_managment/critical_paths/");
+    getCriticalPath();
   }, []);
 
   useEffect(() => {
-    //console.log(criticalPathData);
+    console.log("CRITICAL");
+    console.log(criticalPathData);
   }, [criticalPathData]);
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.title}>{projectData.name}</div>
-      {criticalPathData && (
+      {criticalPathData[0] && (
         <CriticalPathWindow criticalPathData={criticalPathData[0]} />
       )}
 
       <div className={styles.main}>
         <ProjectInfo projectData={projectData} />
-        <ProjectFeatures projectData={projectData} />
+        {criticalPathData[0] ? (
+          <ProjectFeatures
+            projectData={projectData}
+            criticalPathId={criticalPathData[0]._id}
+            getCriticalPath={getCriticalPath}
+          />
+        ) : (
+          <ProjectFeatures
+            projectData={projectData}
+            criticalPathId={undefined}
+            getCriticalPath={getCriticalPath}
+          />
+        )}
       </div>
 
       {/*<div className={styles[`feature-list`]}>

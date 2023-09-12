@@ -6,6 +6,7 @@ const NavigationContext = React.createContext({
   selectedIndex: -1,
   navigateToItem: () => {},
   addToOpen: () => {},
+  removeFromOpen: () => {},
   setCurrentPanelIndex: () => {},
 });
 

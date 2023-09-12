@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import NavigationContext from "../store/navigation-context";
 
+import exitIcon from "../../assets/x-icon.png";
+
 const TemporaryOption = (props) => {
   const navigate = useNavigate();
   const navCtx = useContext(NavigationContext);
@@ -14,14 +16,28 @@ const TemporaryOption = (props) => {
     navCtx.navigateToItem(option, "project");
   };
 
+  const closeProject = () => {
+    navCtx.removeFromOpen(props.option, `/project/projects`);
+  };
+
   return (
     <div
-      onClick={navigateToProject}
-      className={`${styles.wrapper} ${
-        styles[!isHovering && ["wrapper-hover"]]
-      } ${styles[navCtx.selectedIndex === key && ["selected"]]}`}
+      className={`${styles.wrapper} ${styles[!isHovering && "wrapper-hover"]} ${
+        styles[navCtx.selectedIndex === key && ["selected"]]
+      }`}
     >
-      {option.name}
+      <div
+        onClick={navigateToProject}
+        className={`${styles.name} ${styles[!isHovering && "name-hover"]}`}
+      >
+        {option.name}
+      </div>
+
+      <img
+        src={exitIcon}
+        onClick={closeProject}
+        className={`${styles.exit} ${styles[!isHovering && "exit-hover"]}`}
+      />
     </div>
   );
 };
