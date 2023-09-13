@@ -1,0 +1,19 @@
+.wrapper {
+  width: calc(100% - 4rem);
+  height: 100%;
+  border-radius: 0.5rem;
+  background-color: rgb(var(--mid-background-color));
+  padding: 2rem;
+}
+
+.list {
+  height: 55vh;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.title {
+  font-size: 2em;
+  color: whitesmoke;
+  margin-bottom: 2rem;
+}

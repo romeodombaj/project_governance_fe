@@ -1,0 +1,31 @@
+.wrapper {
+  width: calc(100% - 4rem);
+  background-color: rgb(var(--dark-background-color));
+  color: whitesmoke;
+  padding: 1rem 2rem;
+  margin: 0.5rem 0;
+  height: 2rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: 0.4s;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  align-items: center;
+}
+
+.wrapper:hover {
+  background-color: rgb(var(--dark-background-color), 0.6);
+}
+
+.info {
+}
+
+.exit-wrapper {
+}
+
+.exit {
+  height: 1rem;
+  padding: 0.5rem;
+  filter: invert(100%);
+  float: right;
+}

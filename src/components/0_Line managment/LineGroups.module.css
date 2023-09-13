@@ -1,15 +1,12 @@
 .wrapper {
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  position: relative;
 }
 
 .title {
-}
-
-.group-list {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
+  color: whitesmoke;
+  font-size: 2em;
+  font-weight: bold;
+  line-height: 8rem;
 }

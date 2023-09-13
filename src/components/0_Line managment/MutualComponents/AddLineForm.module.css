@@ -1,0 +1,28 @@
+.wrapper {
+  margin-top: 2rem;
+  height: fit-content;
+  padding: 2rem 0;
+  width: 90%;
+  background-color: rgb(var(--dark-background-color));
+  animation: show-up 0.4s;
+  border-radius: 0.5rem;
+}
+
+.section {
+  margin: auto;
+  margin-top: 2rem;
+  width: 80%;
+}
+
+.separator {
+  height: 2rem;
+}
+
+@keyframes show-up {
+  0% {
+    transform: translateY(-10%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
