@@ -1,9 +1,9 @@
-import LineManagmentContext from "../store/line-managment-context";
-import styles from "./LineGroups.module.css";
+import LineManagmentContext from "../store/human-resources-context";
+import styles from "./HumanGroups.module.css";
 import { useContext, useEffect, useState } from "react";
-import DefaultLineLayout from "./MutualComponents/DefaultLineLayout";
+import DefaultHRLayout from "./MutualComponents/DefaultHRLayout";
 
-const LineGroups = () => {
+const HumanGroups = () => {
   const lineCtx = useContext(LineManagmentContext);
 
   useEffect(() => {
@@ -14,13 +14,13 @@ const LineGroups = () => {
     <div className={styles.wrapper}>
       <div className={styles.title}>Manage Groups</div>
 
-      <DefaultLineLayout
+      <DefaultHRLayout
         isEmployee={false}
-        path="line_managment/work_groups"
+        path="work_groups"
         data={lineCtx.groupList}
       />
     </div>
   );
 };
 
-export default LineGroups;
+export default HumanGroups;

@@ -36,7 +36,7 @@ const ProjectList = () => {
   };
 
   useEffect(() => {
-    if (!isCreatingNew) getProjects("project_managment/projects");
+    if (!isCreatingNew) getProjects("projects");
   }, [isCreatingNew]);
 
   return (

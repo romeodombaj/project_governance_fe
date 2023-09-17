@@ -27,13 +27,11 @@ const ProjectInfo = (props) => {
 
   const deleteProject = () => {
     closePrompt();
-    deleteData("", `project_managment/projects/delete/${projectData._id}`).then(
-      (resp) => {
-        if (resp.ok) {
-          navCtx.removeFromOpen(projectData, "/project/projects");
-        }
+    deleteData("", `projects/delete/${projectData._id}`).then((resp) => {
+      if (resp.ok) {
+        navCtx.removeFromOpen(projectData, "/project/projects");
       }
-    );
+    });
   };
 
   useEffect(() => {

@@ -12,7 +12,7 @@ const NewProject = (props) => {
   const [error, setError] = useState("");
 
   const postData = usePostData();
-  const postPath = "project_managment/projects/add";
+  const postPath = "projects/add";
 
   const onNameChange = (event) => {
     setName(event.target.value);

@@ -4,16 +4,17 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import NavigationProvider from "./components/store/NavigationProvider";
-import LineManagmentProvider from "./components/store/LineManagmentProvider";
+import HumanResourcesProvider from "./components/store/LineManagmentProvider";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <NavigationProvider>
-        <LineManagmentProvider>
+        <HumanResourcesProvider>
           <App />
-        </LineManagmentProvider>
+        </HumanResourcesProvider>
       </NavigationProvider>
     </BrowserRouter>
   </React.StrictMode>

@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
-import LineManagmentContext from "./line-managment-context";
 import useGetData from "../hooks/use-get-data";
+import HumanResourcesContext from "./human-resources-context";
 
-const LineManagmentProvider = (props) => {
+const HumanResourcesProvider = (props) => {
   const [employeeList, getEmployeeData] = useGetData();
   const [groupList, getGroupData] = useGetData();
 
   const getEmployees = () => {
-    getEmployeeData("line_managment/employees");
+    getEmployeeData("employees");
   };
 
   const getGroups = () => {
-    getGroupData("line_managment/work_groups");
+    getGroupData("work_groups");
   };
 
-  const lineManagmentContext = {
+  const humanResourcesContext = {
     employeeList: employeeList,
     groupList: groupList,
     getEmployees: getEmployees,
@@ -27,10 +27,10 @@ const LineManagmentProvider = (props) => {
   }, []);
 
   return (
-    <LineManagmentContext.Provider value={lineManagmentContext}>
+    <HumanResourcesContext.Provider value={humanResourcesContext}>
       {props.children}
-    </LineManagmentContext.Provider>
+    </HumanResourcesContext.Provider>
   );
 };
 
-export default LineManagmentProvider;
+export default HumanResourcesProvider;

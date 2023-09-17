@@ -1,11 +1,11 @@
-import styles from "./DefaultLineLayout.module.css";
-import LineList from "./LineList";
+import styles from "./DefaultHRLayout.module.css";
 import Button from "../../Ui/Button";
 import Input from "../../Ui/Input";
 import { useState } from "react";
 import AddLineForm from "./AddLineForm";
+import List from "../../Ui/List";
 
-const DefaultLineLayout = (props) => {
+const DefaultHRLayout = (props) => {
   const data = props.data;
   const isEmployee = props.isEmployee;
   const path = props.path;
@@ -45,7 +45,7 @@ const DefaultLineLayout = (props) => {
         </div>
 
         <div className={styles["list-wrapper"]}>
-          <LineList
+          <List
             isEmployee={isEmployee}
             path={path}
             data={data}
@@ -57,4 +57,4 @@ const DefaultLineLayout = (props) => {
   );
 };
 
-export default DefaultLineLayout;
+export default DefaultHRLayout;

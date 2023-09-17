@@ -71,16 +71,16 @@ const ProjectFeatures = (props) => {
 
     const criticalId = props.criticalPathId;
     if (criticalId !== undefined) {
-      deleteData("", `project_managment/critical_paths/delete/${criticalId}`);
+      deleteData("", `critical_paths/delete/${criticalId}`);
     }
 
-    await postData(data, "project_managment/critical_paths/add");
+    await postData(data, "critical_paths/add");
     props.getCriticalPath();
   };
 
   useEffect(() => {
     if (!isCreating) {
-      getFeatures(`process_managment/features/by_project/${projectData._id}`);
+      getFeatures(`features/by_project/${projectData._id}`);
     }
   }, [isCreating]);
 

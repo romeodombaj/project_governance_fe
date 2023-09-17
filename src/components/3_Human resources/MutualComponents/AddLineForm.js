@@ -6,7 +6,7 @@ import Button from "../../Ui/Button";
 import usePostData from "../../hooks/use-post-data";
 import Dropdown from "../../Ui/Dropdown";
 import { useContext } from "react";
-import LineManagmentContext from "../../store/line-managment-context";
+import LineManagmentContext from "../../store/human-resources-context";
 
 const AddLineForm = (props) => {
   const path = props.path;

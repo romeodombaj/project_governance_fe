@@ -1,7 +1,7 @@
-import styles from "./LineList.module.css";
-import LineListElement from "./LineListElement";
+import styles from "./List.module.css";
+import ListElement from "./ListElement";
 
-const LineList = (props) => {
+const List = (props) => {
   const data = props.data;
   const path = props.path;
   const search = props.search;
@@ -13,7 +13,7 @@ const LineList = (props) => {
         {data.map((item, i) => {
           if (item.name.includes(search)) {
             return (
-              <LineListElement
+              <ListElement
                 isEmployee={isEmployee}
                 key={i}
                 path={path}
@@ -28,4 +28,4 @@ const LineList = (props) => {
   );
 };
 
-export default LineList;
+export default List;

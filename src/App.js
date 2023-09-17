@@ -3,13 +3,14 @@ import LineManagmentPanel from "./components/0_Line managment/LineManagmentPanel
 import Front from "./components/Front";
 import NavBar from "./components/navigation/NavBar";
 import { Routes, Route } from "react-router-dom";
-import LineGroups from "./components/0_Line managment/LineGroups";
-import LineEmployees from "./components/0_Line managment/LineEmployees";
 import ProjectManagmentPanel from "./components/1_Project managment/ProjectManagmentPanel";
 import ProcessManagmentPanel from "./components/2_Process magment/ProcessManagmentPanel";
 import ProjectProjects from "./components/1_Project managment/ProjectList";
 import ProcessFeatures from "./components/2_Process magment/ProcessFeatures";
 import Project from "./components/1_Project managment/SingleProject/Project";
+import HumanResourcesPanel from "./components/3_Human resources/HumanResourcesPanel";
+import HumanGroups from "./components/3_Human resources/HumanGroups";
+import HumanEmployees from "./components/3_Human resources/HumanEmployees";
 
 const navOptions = [
   {
@@ -49,9 +50,10 @@ function App() {
     <div className={styles.App}>
       <Routes>
         <Route path="/" element={<Front />} />
-        <Route path="/line" element={<LineManagmentPanel />}>
-          <Route path="groups" element={<LineGroups />} />
-          <Route path="employees" element={<LineEmployees />} />
+        <Route path="/line" element={<LineManagmentPanel />}></Route>
+        <Route path="/hr" element={<HumanResourcesPanel />}>
+          <Route path="groups" element={<HumanGroups />} />
+          <Route path="employees" element={<HumanEmployees />} />
         </Route>
         <Route path="/project" element={<ProjectManagmentPanel />}>
           <Route path="projects" element={<ProjectProjects />} />

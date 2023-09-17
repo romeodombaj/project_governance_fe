@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 const Front = () => {
   return (
     <div className={styles.wrapper}>
+      <Link to="/hr" className={styles.button}>
+        Human Resources
+      </Link>
       <Link to="/line" className={styles.button}>
         Line Managment
       </Link>

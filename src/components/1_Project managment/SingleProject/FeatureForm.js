@@ -18,9 +18,9 @@ const FeatureForm = (props) => {
   const postData = usePostData();
   const patchData = usePatchData();
   const deleteData = useDeleteData();
-  const postPath = "process_managment/features/add";
-  let patchPath = `process_managment/features/update/${editData._id}`;
-  let deletePath = `process_managment/features/delete/${editData._id}`;
+  const postPath = "features/add";
+  let patchPath = `features/update/${editData._id}`;
+  let deletePath = `features/delete/${editData._id}`;
 
   const onFeatureSubmit = async (e) => {
     e.preventDefault();
@@ -87,8 +87,8 @@ const FeatureForm = (props) => {
     setName(editData.name);
     setDuration(editData.duration);
     setCondidionts(editData.conditions);
-    patchPath = `process_managment/features/update/${editData._id}`;
-    deletePath = `process_managment/features/delete/${editData._id}`;
+    patchPath = `features/update/${editData._id}`;
+    deletePath = `features/delete/${editData._id}`;
   }, [editData]);
 
   return (

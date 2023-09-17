@@ -1,10 +1,10 @@
-import styles from "./LineListElement.module.css";
-import exitIcon from "../../../assets/x-icon.png";
-import useDeleteData from "../../hooks/use-delete-data";
+import styles from "./ListElement.module.css";
+import exitIcon from "../../assets/x-icon.png";
+import useDeleteData from "../hooks/use-delete-data";
 import { useContext } from "react";
-import LineManagmentContext from "../../store/line-managment-context";
+import LineManagmentContext from "../store/human-resources-context";
 
-const LineListElement = (props) => {
+const ListElement = (props) => {
   const data = props.data;
   const index = props.i;
   const path = props.path;
@@ -42,4 +42,4 @@ const LineListElement = (props) => {
   );
 };
 
-export default LineListElement;
+export default ListElement;

@@ -2,7 +2,6 @@ import { useParams, useLocation } from "react-router-dom";
 import styles from "./Project.module.css";
 import ProjectInfo from "./ProjectInfo";
 import ProjectFeatures from "./ProjectFeatures";
-import FeatureForm from "./FeatureForm";
 import CriticalPathWindow from "./CriticalPath/CriticalPathWindow";
 import { useEffect } from "react";
 import useGetData from "../../hooks/use-get-data";
@@ -15,7 +14,7 @@ const Project = () => {
   const [criticalPathData, getCriticalPathData] = useGetData();
 
   const getCriticalPath = () => {
-    getCriticalPathData(`project_managment/critical_paths/${projectData._id}`);
+    getCriticalPathData(`critical_paths/${projectData._id}`);
   };
 
   useEffect(() => {
@@ -53,17 +52,6 @@ const Project = () => {
           />
         )}
       </div>
-
-      {/*<div className={styles[`feature-list`]}>
-        {projectData.features &&
-          projectData.features.map((feature) => {
-            return <div className={styles.feature}>{feature}</div>;
-          })}
-        <div className={styles[`add-feature`]} onClick={addFeatureHandler}>
-          ADD
-        </div>
-      </div>
-      */}
     </div>
   );
 };
