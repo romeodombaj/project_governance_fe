@@ -1,0 +1,16 @@
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+.title {
+  color: whitesmoke;
+  font-size: 2em;
+  font-weight: bold;
+  line-height: 8rem;
+}
+
+.list {
+  height: 100%;
+}

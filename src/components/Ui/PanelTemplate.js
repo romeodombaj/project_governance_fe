@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import styles from "./PanelTemplate.module.css";
 import NavBar from "../navigation/NavBar";
+import React from "react";
 
 const PanelTemplate = (props) => {
   return (

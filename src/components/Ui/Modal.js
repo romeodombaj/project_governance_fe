@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import styles from "./Modal.module.css";
 import ReactDOM from "react-dom";
+import React from "react";
 
 const Modal = (props) => {
   const portalElement = document.getElementById("overlays");

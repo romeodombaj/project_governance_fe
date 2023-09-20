@@ -1,18 +1,34 @@
 import { Fragment, useEffect, useState, useContext } from "react";
 import styles from "./ProjectList.module.css";
-import useGetData from "../hooks/use-get-data";
 import NewProjectWindow from "./NewProject";
 import NavigationContext from "../store/navigation-context";
-import Project from "./SingleProject/Project";
 import Input from "../Ui/Input";
+import ProjectContext from "../store/project-context";
+import React from "react";
+import HumanResourcesContext from "../store/human-resources-context";
+import { useNavigate } from "react-router-dom";
 
 const ProjectList = () => {
   const [isCreatingNew, setIsCreatingNew] = useState(false);
   const [searchValue, setSearchValue] = useState("");
-
-  const [projectList, getProjects] = useGetData();
-
+  const navigate = useNavigate();
   const navCtx = useContext(NavigationContext);
+  const prjCtx = useContext(ProjectContext);
+  const hrCtx = useContext(HumanResourcesContext);
+
+  const [selectedData, setSelectedData] = useState([]);
+
+  useEffect(() => {
+    if (prjCtx.currentManager) {
+      setSelectedData(
+        prjCtx.projectList.filter(
+          (el) => el.projectManagerId === prjCtx.currentManager._id
+        )
+      );
+    } else {
+      navigate("../");
+    }
+  }, [prjCtx.projectList]);
 
   const onSearchHandler = (event) => {
     setSearchValue(event.target.value);
@@ -30,31 +46,44 @@ const ProjectList = () => {
     const selectedId = event.currentTarget.getAttribute("value");
 
     navCtx.addToOpen(
-      projectList[projectList.findIndex((index) => index._id === selectedId)],
+      prjCtx.projectList[
+        prjCtx.projectList.findIndex((index) => index._id === selectedId)
+      ],
       "project"
     );
   };
 
   useEffect(() => {
-    if (!isCreatingNew) getProjects("projects");
+    if (!isCreatingNew) {
+      prjCtx.fetchAllData();
+    }
   }, [isCreatingNew]);
 
   return (
     <Fragment>
-      {isCreatingNew && <NewProjectWindow onClose={onCloseNewProject} />}
+      {isCreatingNew && (
+        <NewProjectWindow
+          projectManagerId={prjCtx.currentManager._id}
+          onClose={onCloseNewProject}
+        />
+      )}
       <div className={styles.wrapper}>
         <div className={styles.title}>PROJECT MANAGMENT PANEL</div>
         <div className={styles[`project-actions-wrapper`]}>
           <div className={styles.search}>
-            <Input onChange={onSearchHandler} value={searchValue}></Input>
+            <Input
+              placeholder="Search..."
+              onChange={onSearchHandler}
+              value={searchValue}
+            ></Input>
           </div>
           <div onClick={onCreateNewProject} className={styles[`add-button`]}>
             Add project
           </div>
         </div>
         <div className={styles[`project-list`]}>
-          {projectList &&
-            projectList.map((project) => {
+          {selectedData &&
+            selectedData.map((project) => {
               if (project.name.includes(searchValue)) {
                 return (
                   <div

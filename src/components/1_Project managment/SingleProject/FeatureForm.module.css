@@ -1,15 +1,19 @@
 .wrapper {
-  height: 40vh;
+  height: 60vh;
   width: calc(30% - 7rem);
   background-color: rgb(var(--dark-background-color));
   border-radius: 2rem;
-  padding: 6rem;
+  padding: 1rem 6rem;
   margin: 0.5rem;
   animation: fade-in 0.5s;
 }
 
 .font {
   font-size: 0.6em;
+}
+
+.id {
+  font-weight: bold;
 }
 
 .section {

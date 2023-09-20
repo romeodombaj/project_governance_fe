@@ -1,13 +1,40 @@
-import LineManagmentContext from "../store/human-resources-context";
 import styles from "./HumanEmployees.module.css";
 import { useContext, useEffect, useState } from "react";
 import DefaultHRLayout from "./MutualComponents/DefaultHRLayout";
+import HumanResourcesContext from "../store/human-resources-context";
+import React from "react";
+
 
 const HumanEmployees = () => {
-  const lineCtx = useContext(LineManagmentContext);
+  const hrCtx = useContext(HumanResourcesContext);
+
+  const inputs = [
+    {
+      name: "name",
+      value: "",
+    },
+    {
+      name: "surname",
+      value: "",
+    },
+    {
+      name: "skills",
+      value: "",
+    },
+  ];
+
+  const drops = [
+    {
+      name: "choose group",
+      value: "",
+      dataList: [...hrCtx.groupList],
+    },
+  ];
+
+  console.log(drops);
 
   useEffect(() => {
-    lineCtx.getGroups();
+    hrCtx.getEmployees();
   }, []);
 
   return (
@@ -15,9 +42,13 @@ const HumanEmployees = () => {
       <div className={styles.title}>Manage Employees</div>
 
       <DefaultHRLayout
+        form={{
+          inputs: [...inputs],
+          drops: [...drops],
+        }}
         isEmployee={true}
         path="employees"
-        data={lineCtx.employeeList}
+        data={hrCtx.employeeList}
       />
     </div>
   );

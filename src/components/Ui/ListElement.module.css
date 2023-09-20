@@ -9,7 +9,8 @@
   cursor: pointer;
   transition: 0.4s;
   display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
   align-items: center;
 }
 

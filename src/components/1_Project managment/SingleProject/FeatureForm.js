@@ -7,6 +7,7 @@ import usePatchData from "../../hooks/use-patch-data";
 import { useEffect, useState } from "react";
 import useDeleteData from "../../hooks/use-delete-data";
 import Error from "../../Ui/Error";
+import React from "react";
 
 const FeatureForm = (props) => {
   const editData = props.editData.feature;
@@ -14,6 +15,7 @@ const FeatureForm = (props) => {
   const [name, setName] = useState(editData.name || "");
   const [conditions, setCondidionts] = useState(editData.conditions || "");
   const [duration, setDuration] = useState(editData.duration || "");
+  const [skill, setSkill] = useState(editData.skill || "");
   const [error, setError] = useState("");
   const postData = usePostData();
   const patchData = usePatchData();
@@ -25,12 +27,14 @@ const FeatureForm = (props) => {
   const onFeatureSubmit = async (e) => {
     e.preventDefault();
 
-    if (name.length > 0 && duration.length > 0) {
+    if (name.length > 0 && duration.length > 0 && skill.length > 0) {
       const data = {
         projectId: props.projectData._id,
         name: name,
         conditions: conditions,
         duration: duration,
+        skill: skill,
+        employees: [],
       };
 
       if (props.edit) {
@@ -48,7 +52,7 @@ const FeatureForm = (props) => {
         });
       }
     } else {
-      setError("Make sure to fill NAME and DURATION fields ");
+      setError("Make sure to fill NAME, DURATION and SKILL fields ");
     }
   };
 
@@ -58,6 +62,7 @@ const FeatureForm = (props) => {
       name: name,
       conditions: conditions,
       duration: duration,
+      skill: skill,
     };
 
     await deleteData(data, deletePath).then((resp) => {
@@ -83,6 +88,11 @@ const FeatureForm = (props) => {
     setDuration(value);
   };
 
+  const onChangeSkill = (e) => {
+    const value = e.target.value;
+    setSkill(value);
+  };
+
   useEffect(() => {
     setName(editData.name);
     setDuration(editData.duration);
@@ -97,7 +107,7 @@ const FeatureForm = (props) => {
         <Error value={error} />
         <div className={styles.section}>
           <Label>
-            <div className={styles.font}>{id}</div>
+            <div className={`${styles.font} ${styles.id}`}>{id}</div>
           </Label>
           <Label>
             <div className={styles.font}>{props.id}</div>
@@ -128,6 +138,15 @@ const FeatureForm = (props) => {
           </Label>
           <div className={styles.input}>
             <Input onChange={onChangeDuration} value={duration}></Input>
+          </div>
+        </div>
+
+        <div className={styles.section}>
+          <Label>
+            <div className={styles.font}>Skill</div>
+          </Label>
+          <div className={styles.input}>
+            <Input onChange={onChangeSkill} value={skill}></Input>
           </div>
         </div>
 

@@ -14,11 +14,17 @@ const HumanResourcesProvider = (props) => {
     getGroupData("work_groups");
   };
 
+  const fetchAllData = () => {
+    getEmployees();
+    getGroups();
+  };
+
   const humanResourcesContext = {
     employeeList: employeeList,
     groupList: groupList,
     getEmployees: getEmployees,
     getGroups: getGroups,
+    fetchAllData: fetchAllData,
   };
 
   useEffect(() => {

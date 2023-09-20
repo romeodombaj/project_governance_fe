@@ -5,6 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: rgb(var(--mid-background-color), 0.85);
 }
 
 .button {
@@ -13,12 +14,12 @@
   margin: 2rem;
   padding: 1rem;
   cursor: pointer;
-  background-color: rgb(77, 77, 77);
+  background-color: rgb(var(--dark-background-color));
   border-radius: 1rem;
   text-decoration: none;
   color: aliceblue;
 }
 
 .button:hover {
-  background-color: rgb(99, 99, 99);
+  background-color: rgb(var(--dark-background-color), 0.7);
 }

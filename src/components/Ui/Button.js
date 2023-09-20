@@ -1,4 +1,5 @@
 import styles from "./Button.module.css";
+import React from "react";
 
 const Button = (props) => {
   return (
@@ -6,6 +7,7 @@ const Button = (props) => {
       style={{ backgroundColor: props.color }}
       type={props.type}
       onClick={props.onClick}
+      data={props.data}
       className={`${styles.wrapper} ${styles[props.isLight && "light"]}`}
     >
       {props.children}

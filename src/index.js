@@ -4,8 +4,9 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import NavigationProvider from "./components/store/NavigationProvider";
-import HumanResourcesProvider from "./components/store/LineManagmentProvider";
-
+import HumanResourcesProvider from "./components/store/HumanResourcesProvider";
+import LineProvider from "./components/store/LineProvider";
+import ProjectProvider from "./components/store/ProjectProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -13,7 +14,11 @@ root.render(
     <BrowserRouter>
       <NavigationProvider>
         <HumanResourcesProvider>
-          <App />
+          <LineProvider>
+            <ProjectProvider>
+              <App />
+            </ProjectProvider>
+          </LineProvider>
         </HumanResourcesProvider>
       </NavigationProvider>
     </BrowserRouter>

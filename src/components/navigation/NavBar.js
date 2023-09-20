@@ -4,13 +4,14 @@ import NavigationContext from "../store/navigation-context";
 import { useContext, useState } from "react";
 import Project from "../1_Project managment/SingleProject/Project";
 import TemporaryOption from "./TemporaryOption";
+import React from "react";
 
 const navOptions = [
   {
     id: 0,
-    name: "Line Managment",
-    link: "line",
-    component: "<LineManagmentPanel/>",
+    name: "Human Resources",
+    link: "hr",
+    component: "<HumanResourcesPanel />",
     options: [
       { id: 0, name: "Groups", link: "groups" },
       { id: 1, name: "Employees", link: "employees" },
@@ -18,13 +19,24 @@ const navOptions = [
   },
   {
     id: 1,
+    name: "Line Managment",
+    link: "line",
+    component: "<LineManagmentPanel/>",
+    options: [
+      { id: 0, name: "Requests", link: "requests" },
+      { id: 1, name: "Employees", link: "employees" },
+      { id: 2, name: "Compentence planing", link: "chart" },
+    ],
+  },
+  {
+    id: 2,
     name: "Project Managment",
     link: "project",
     component: "<ProjectManagmentPanel/>",
     options: [{ id: 0, name: "Projects", link: "projects" }],
   },
   {
-    id: 2,
+    id: 3,
     name: "Process Managment",
     link: "process",
     component: "<ProcessManagmentPanel/>",
@@ -50,6 +62,10 @@ const NavBar = () => {
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
+      <Link to={"/"} className={styles["home-button"]}>
+        HOME
+      </Link>
+
       {navCtx.currentPanelIndex &&
         navOptions[navCtx.currentPanelIndex].options.map((option) => {
           return (

@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import styles from "./Error.module.css";
+import React from "react";
 
 const Error = (props) => {
   return (

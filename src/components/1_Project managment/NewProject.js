@@ -5,6 +5,8 @@ import { useState } from "react";
 import Button from "../Ui/Button";
 import Input from "../Ui/Input";
 import Label from "../Ui/Label";
+import React from "react";
+
 import Error from "../Ui/Error";
 
 const NewProject = (props) => {
@@ -24,6 +26,7 @@ const NewProject = (props) => {
     if (name.length > 0) {
       const data = {
         name: name,
+        projectManagerId: props.projectManagerId,
       };
       postData(data, postPath).then((resp) => {
         if (resp.ok) {

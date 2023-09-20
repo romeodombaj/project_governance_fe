@@ -1,3 +1,4 @@
+import React from "react";
 const usePostData = () => {
   const postData = async (data, path) => {
     const resp = await fetch(`http://localhost:5000/${path}`, {

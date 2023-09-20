@@ -20,9 +20,20 @@
 }
 
 .element {
-  color: wheat;
+  color: whitesmoke;
+  background-color: rgb(var(--mid-background-color));
   text-decoration: none;
+  line-height: 3rem;
+  border-radius: 0.25rem;
+  width: 90%;
+  margin: 0 auto;
   margin-top: 1rem;
+  transition: 0.3s;
+  font-weight: bold;
+}
+
+.element:hover {
+  background-color: rgb(var(--mid-background-color), 0.7);
 }
 
 .separator {
@@ -39,4 +50,20 @@
   color: white;
   margin-bottom: 2rem;
   overflow: auto;
+}
+
+.home-button {
+  width: 90%;
+  background-color: rgb(var(--highlight-color));
+  line-height: 3rem;
+  font-weight: bold;
+  border-radius: 0.25rem;
+  color: whitesmoke;
+  text-decoration: none;
+  margin: 0 auto;
+  transition: 0.3s;
+}
+
+.home-button:hover {
+  background-color: rgb(var(--highlight-color), 0.3);
 }

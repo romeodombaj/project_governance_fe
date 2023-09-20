@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import NavigationContext from "./navigation-context";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import React from "react";
+import LineContext from "./line-context";
 
 const NavigationProvider = (props) => {
   const navigate = useNavigate();
@@ -40,14 +42,20 @@ const NavigationProvider = (props) => {
     navigate(mainLocation);
   };
 
+  const resetOpen = () => {
+    setOpenList([]);
+  };
+
   const navigationContext = {
     currentPanelIndex: currentPanelIndex,
     openList: openList,
     selectedIndex: selectedIndex,
+
     navigateToItem: navigateToItem,
     addToOpen: addToOpen,
     removeFromOpen,
     removeFromOpen,
+    resetOpen,
     setCurrentPanelIndex: setCurrentPanelIndex,
   };
 

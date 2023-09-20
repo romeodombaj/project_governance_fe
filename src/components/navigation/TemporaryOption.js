@@ -2,6 +2,7 @@ import styles from "./TemporaryOption.module.css";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import NavigationContext from "../store/navigation-context";
+import React from "react";
 
 import exitIcon from "../../assets/x-icon.png";
 

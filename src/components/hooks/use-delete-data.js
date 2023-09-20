@@ -1,3 +1,5 @@
+import React from "react";
+
 const useDeleteData = () => {
   const deleteData = async (data, path) => {
     const resp = await fetch(`http://localhost:5000/${path}`, {

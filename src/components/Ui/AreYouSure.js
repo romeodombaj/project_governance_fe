@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import styles from "./AreYouSure.module.css";
 import Modal from "./Modal";
 import Button from "./Button";
+import React from "react";
 
 const AreYouSure = (props) => {
   return (

@@ -7,6 +7,7 @@ const NavigationContext = React.createContext({
   navigateToItem: () => {},
   addToOpen: () => {},
   removeFromOpen: () => {},
+  resetOpen: () => {},
   setCurrentPanelIndex: () => {},
 });
 

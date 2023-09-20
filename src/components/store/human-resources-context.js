@@ -5,6 +5,7 @@ const HumanResourcesContext = React.createContext({
   groupList: [],
   getEmployees: () => {},
   getGroups: () => {},
+  fetchAllData: () => {},
 });
 
 export default HumanResourcesContext;

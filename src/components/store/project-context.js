@@ -2,7 +2,11 @@ import React from "react";
 
 const ProjectContext = React.createContext({
   projectList: [],
+  currentManager: null,
+  setCurrentManager: () => {},
   addProjectToList: () => {},
   getProjectData: () => {},
-  fetchProjectData: () => {},
+  fetchAllData: () => {},
 });
+
+export default ProjectContext;

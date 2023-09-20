@@ -7,9 +7,12 @@ import FeatureForm from "./FeatureForm";
 import useGetData from "../../hooks/use-get-data";
 import usePostData from "../../hooks/use-post-data";
 import useDeleteData from "../../hooks/use-delete-data";
+import React from "react";
+
 
 const ProjectFeatures = (props) => {
   const projectData = props.projectData;
+  const criticalPathData = props.criticalPathData;
   const [isCreating, setIsCreating] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [editData, setEditData] = useState({
@@ -67,7 +70,6 @@ const ProjectFeatures = (props) => {
     const data = {
       ...featureList,
     };
-    console.log(props.criticalPathId);
 
     const criticalId = props.criticalPathId;
     if (criticalId !== undefined) {
@@ -75,7 +77,15 @@ const ProjectFeatures = (props) => {
     }
 
     await postData(data, "critical_paths/add");
-    props.getCriticalPath();
+    await props.getCriticalPath();
+
+    const reqData = {
+      projectId: projectData._id,
+      name: projectData.name,
+      approved: false,
+    };
+
+    postData(reqData, "position_requests/add");
   };
 
   useEffect(() => {
