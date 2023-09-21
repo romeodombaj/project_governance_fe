@@ -14,7 +14,6 @@ const NavigationProvider = (props) => {
 
   // navigation to selected item
   const navigateToItem = (item, mainLocation) => {
-    console.log("navigate");
 
     navigate(`${mainLocation}/${item._id}`, { state: { option: item } });
     const index = openList.findIndex((el) => el._id === item._id);

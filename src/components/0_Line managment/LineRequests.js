@@ -26,13 +26,14 @@ const LineRequests = (props) => {
   const [selectedData, setSelectedData] = useState([]);
   const navigate = useNavigate();
 
+  const columnNames = ["index", "project name", "Group", "feature index", ""];
+
   useEffect(() => {
     if (lineCtx.currentManager) {
-      setSelectedData(
+      setRequestList(
         lineCtx.requestList.filter(
           (el) =>
-            el.groupName === lineCtx.currentManager.groupName &&
-            el.skills !== "line manager"
+            el.groupName === lineCtx.currentManager.groupName && !el.approved
         )
       );
     } else {
@@ -79,16 +80,6 @@ const LineRequests = (props) => {
     setIsAssigning(false);
   };
 
-  useEffect(() => {
-    let tempReqL = [];
-
-    for (let i in lineCtx.requestList) {
-      if (lineCtx.requestList[i].approved === false)
-        tempReqL.push(lineCtx.requestList[i]);
-    }
-    setRequestList(tempReqL);
-  }, [lineCtx.requestList]);
-
   const onElementClick = async (e) => {
     const index = e.target.getAttribute("index");
     setRequestIndex(index);
@@ -97,10 +88,25 @@ const LineRequests = (props) => {
       `critical_paths/${requestList[index].projectId}`
     );
 
-    const skills = [...res[0].calculatedArray.map((el) => el.skill)];
+    const feature = res[0].calculatedArray.filter(
+      (el) => el.i === requestList[requestIndex].featureIndex
+    );
+
     let tempDrops = [];
 
-    for (let i in skills) {
+    tempDrops = [
+      {
+        name: feature[0].skill,
+        value: "",
+        dataList: hrCtx.employeeList
+          .filter((el) => el.skills === feature[0].skill)
+          .map((e) => {
+            return { name: e.name + " " + e.surname };
+          }),
+      },
+    ];
+
+    /*for (let i in skills) {
       tempDrops.push({
         name: skills[i],
         value: "",
@@ -110,7 +116,7 @@ const LineRequests = (props) => {
             return { name: e.name + " " + e.surname };
           }),
       });
-    }
+    }*/
 
     setDrops(tempDrops);
     openForm();
@@ -127,9 +133,10 @@ const LineRequests = (props) => {
         <div className={styles.title}>Position requests</div>
         <div className={styles.list}>
           <List
+            columns={columnNames}
             onElementClick={onElementClick}
             path={path}
-            data={selectedData}
+            data={requestList}
             search={search}
           />
         </div>

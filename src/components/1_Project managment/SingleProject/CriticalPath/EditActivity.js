@@ -5,19 +5,19 @@ import Input from "../../../Ui/Input";
 import Dropdown from "../../../Ui/Dropdown";
 import React from "react";
 
-
 const EditActivity = (props) => {
   const criticalData = props.criticalData;
   const requestData = props.requestData;
 
   const [drop, setDrop] = useState("");
 
+  console.log("HERESA");
   console.log(criticalData);
-  console.log(requestData.skills[0]);
+  console.log(requestData);
 
   let skills = [];
 
-  if (requestData) {
+  /*if (requestData) {
     skills = requestData.skills.filter(
       (el) => el.skill === requestData.skills[props.index].skill
     );
@@ -29,7 +29,7 @@ const EditActivity = (props) => {
     }
 
     skills = tSkills;
-  }
+  }*/
 
   console.log("SKILS");
 

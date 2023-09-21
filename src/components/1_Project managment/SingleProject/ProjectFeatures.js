@@ -75,16 +75,24 @@ const ProjectFeatures = (props) => {
       deleteData("", `critical_paths/delete/${criticalId}`);
     }
 
+    console.log("FEATURES");
+
     await postData(data, "critical_paths/add");
     await props.getCriticalPath();
 
-    const reqData = {
-      projectId: projectData._id,
-      name: projectData.name,
-      approved: false,
-    };
+    let reqData = [];
 
-    postData(reqData, "position_requests/add");
+    for (let i in data) {
+      reqData.push({
+        projectId: projectData._id,
+        name: projectData.name,
+        approved: false,
+        groupName: featureList[i].groupName,
+        featureIndex: i,
+      });
+    }
+    console.log(reqData);
+    postData(reqData, "position_requests/addMany");
   };
 
   useEffect(() => {

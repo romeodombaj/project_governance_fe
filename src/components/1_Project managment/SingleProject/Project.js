@@ -43,14 +43,12 @@ const Project = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.title}>{projectData.name}</div>
-      {criticalPathData[0] &&
-        positionRequest[0] &&
-        positionRequest[0].approved && (
-          <CriticalPathWindow
-            requestData={positionRequest[0]}
-            criticalPathData={criticalPathData[0]}
-          />
-        )}
+      {criticalPathData[0] && (
+        <CriticalPathWindow
+          requestData={positionRequest}
+          criticalPathData={criticalPathData[0]}
+        />
+      )}
 
       <div className={styles.main}>
         <ProjectInfo

@@ -4,10 +4,12 @@ import Input from "../../Ui/Input";
 import styles from "./FeatureForm.module.css";
 import usePostData from "../../hooks/use-post-data";
 import usePatchData from "../../hooks/use-patch-data";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import useDeleteData from "../../hooks/use-delete-data";
 import Error from "../../Ui/Error";
 import React from "react";
+import Dropdown from "../../Ui/Dropdown";
+import HumanResourcesContext from "../../store/human-resources-context";
 
 const FeatureForm = (props) => {
   const editData = props.editData.feature;
@@ -16,6 +18,7 @@ const FeatureForm = (props) => {
   const [conditions, setCondidionts] = useState(editData.conditions || "");
   const [duration, setDuration] = useState(editData.duration || "");
   const [skill, setSkill] = useState(editData.skill || "");
+  const [group, setGroup] = useState(editData.group || "");
   const [error, setError] = useState("");
   const postData = usePostData();
   const patchData = usePatchData();
@@ -23,6 +26,7 @@ const FeatureForm = (props) => {
   const postPath = "features/add";
   let patchPath = `features/update/${editData._id}`;
   let deletePath = `features/delete/${editData._id}`;
+  const hrCtx = useContext(HumanResourcesContext);
 
   const onFeatureSubmit = async (e) => {
     e.preventDefault();
@@ -34,6 +38,7 @@ const FeatureForm = (props) => {
         conditions: conditions,
         duration: duration,
         skill: skill,
+        groupName: group,
         employees: [],
       };
 
@@ -93,6 +98,11 @@ const FeatureForm = (props) => {
     setSkill(value);
   };
 
+  const onChangeGroup = (e) => {
+    const value = e.target.value;
+    setGroup(value);
+  };
+
   useEffect(() => {
     setName(editData.name);
     setDuration(editData.duration);
@@ -147,6 +157,19 @@ const FeatureForm = (props) => {
           </Label>
           <div className={styles.input}>
             <Input onChange={onChangeSkill} value={skill}></Input>
+          </div>
+        </div>
+
+        <div className={styles.section}>
+          <Label>
+            <div className={styles.font}>Group</div>
+          </Label>
+          <div className={styles.input}>
+            <Dropdown
+              data={hrCtx.groupList}
+              onChange={onChangeGroup}
+              value={group}
+            />
           </div>
         </div>
 

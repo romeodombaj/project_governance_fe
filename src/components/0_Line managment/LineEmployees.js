@@ -11,6 +11,7 @@ const LineEmployees = (props) => {
   const lineCtx = useContext(LineContext);
   const path = "employees";
   const navigate = useNavigate();
+  const columnNames = ["index", "name", "surname", "skills", "groupName"];
 
   const [search, setSearch] = useState("");
   const [selectedData, setSelectedData] = useState([]);
@@ -33,7 +34,12 @@ const LineEmployees = (props) => {
     <div className={styles.wrapper}>
       <div className={styles.title}>Employee List</div>
       <div className={styles.List}>
-        <List path={path} data={selectedData} search={search}></List>
+        <List
+          columns={columnNames}
+          path={path}
+          data={selectedData}
+          search={search}
+        ></List>
       </div>
     </div>
   );

@@ -4,7 +4,6 @@ import styles from "./CriticalPathWindow.module.css";
 import EditActivity from "./EditActivity";
 import React from "react";
 
-
 const CriticalPathWindow = (props) => {
   const [isEditing, setIsEditing] = useState(false);
   const criticalPathData = props.criticalPathData;
@@ -56,7 +55,7 @@ const CriticalPathWindow = (props) => {
       {isEditing && (
         <EditActivity
           criticalData={criticalPathData}
-          requestData={requestData}
+          requestData={requestData[activityIndex]}
           onClose={closeEdit}
           index={activityIndex}
         />
