@@ -4,6 +4,7 @@ import useDeleteData from "../hooks/use-delete-data";
 import { useContext } from "react";
 import LineManagmentContext from "../store/human-resources-context";
 import React from "react";
+import { useState, useEffect } from "react";
 
 const ListElement = (props) => {
   const data = props.data;
@@ -11,6 +12,16 @@ const ListElement = (props) => {
   const path = props.path;
   const isEmployee = props.isEmployee;
   const lineCtx = useContext(LineManagmentContext);
+  const [dataArray, setDataArray] = useState(["", "", "", "", ""]);
+
+  useEffect(() => {
+    let tempArray = Object.keys(data).map((key) => data[key]);
+    tempArray = tempArray.filter((el) => el.length < 24);
+    for (let i = tempArray.length; i < 4; i++) {
+      tempArray.push("");
+    }
+    setDataArray(tempArray);
+  }, [data]);
 
   const deleteData = useDeleteData();
 
@@ -26,15 +37,13 @@ const ListElement = (props) => {
   return (
     <div className={styles.wrapper} onClick={props.onClick} index={index}>
       <div className={styles.info}>{index}</div>
-      {data.map((column, i) => {
+      {dataArray.map((column, i) => {
         return (
           <div key={i} className={styles.info}>
             {column}
           </div>
         );
       })}
-      <div className={styles.info}>{data[0]}</div>
-      <div className={styles.info}>{isEmployee && data.groupName}</div>
       <div
         className={styles["exit-wrapper"]}
         onClick={onDeleteHandler}

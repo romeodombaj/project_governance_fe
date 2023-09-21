@@ -22,7 +22,7 @@ const LineManagmentPanel = () => {
   );
 
   const onManagerSelect = (value) => {
-    lineCtx.setCurrentManager(value[0]);
+    lineCtx.setCurrentManager(value);
     navigate("requests");
   };
 
@@ -32,8 +32,6 @@ const LineManagmentPanel = () => {
     hrCtx.fetchAllData();
     navCtx.setCurrentPanelIndex("1");
   }, []);
-
-
 
   return (
     <Fragment>

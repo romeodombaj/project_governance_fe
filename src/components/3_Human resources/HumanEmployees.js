@@ -4,9 +4,9 @@ import DefaultHRLayout from "./MutualComponents/DefaultHRLayout";
 import HumanResourcesContext from "../store/human-resources-context";
 import React from "react";
 
-
 const HumanEmployees = () => {
   const hrCtx = useContext(HumanResourcesContext);
+  const columnNames = ["index", "name", "surname", "skills", "groupName"];
 
   const inputs = [
     {
@@ -47,6 +47,7 @@ const HumanEmployees = () => {
           drops: [...drops],
         }}
         isEmployee={true}
+        columnNames={columnNames}
         path="employees"
         data={hrCtx.employeeList}
       />

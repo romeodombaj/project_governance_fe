@@ -22,7 +22,7 @@ const ProjectManagmentPanel = () => {
   );
 
   const onManagerSelect = (value) => {
-    prjCtx.setCurrentManager(value[0]);
+    prjCtx.setCurrentManager(value);
     navigate("projects");
   };
 

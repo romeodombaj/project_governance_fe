@@ -1,14 +1,14 @@
 import Button from "./Button";
 import Modal from "./Modal";
 import styles from "./SelectManager.module.css";
-import React from "react";
+import React, { Fragment } from "react";
 
 const SelectManager = (props) => {
   const data = props.data;
 
   const onClick = (e) => {
-    const value = e.currentTarget.getAttribute("data");
-    props.onClick(data);
+    const index = e.currentTarget.getAttribute("index");
+    props.onClick(data[index]);
   };
 
   return (
@@ -17,9 +17,18 @@ const SelectManager = (props) => {
         {data &&
           data.map((item, i) => {
             return (
-              <Button key={i} data={item} onClick={onClick} isLight={true}>
-                {item.name} {item.surname}
-              </Button>
+              <Fragment key={i}>
+                <div className={styles.separator} />
+                <Button
+                  key={i}
+                  index={i}
+                  data={item}
+                  onClick={onClick}
+                  isLight={true}
+                >
+                  {item.name} {item.surname}
+                </Button>
+              </Fragment>
             );
           })}
       </div>

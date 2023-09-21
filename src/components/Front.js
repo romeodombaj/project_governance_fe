@@ -5,14 +5,17 @@ import NavigationContext from "./store/navigation-context";
 import { useContext } from "react";
 import React from "react";
 import LineContext from "./store/line-context";
+import ProjectContext from "./store/project-context";
 
 const Front = () => {
   const navCtx = useContext(NavigationContext);
   const lineCtx = useContext(LineContext);
+  const projCtx = useContext(ProjectContext);
 
   useEffect(() => {
     navCtx.resetOpen();
     lineCtx.setCurrentManager();
+    projCtx.setCurrentManager();
   }, []);
 
   return (

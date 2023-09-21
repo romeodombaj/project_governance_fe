@@ -9,7 +9,6 @@ import usePostData from "../../hooks/use-post-data";
 import useDeleteData from "../../hooks/use-delete-data";
 import React from "react";
 
-
 const ProjectFeatures = (props) => {
   const projectData = props.projectData;
   const criticalPathData = props.criticalPathData;
@@ -98,6 +97,13 @@ const ProjectFeatures = (props) => {
     <Fragment>
       <div className={styles.wrapper}>
         <Label>Project Features</Label>
+        <div className={styles.columns}>
+          <div>ID</div>
+          <div>Name</div>
+          <div>Conditions</div>
+          <div>Duration</div>
+          <div>Skills</div>
+        </div>
         <div className={styles["feature-list"]}>
           {featureList &&
             featureList.map((feature, i) => {

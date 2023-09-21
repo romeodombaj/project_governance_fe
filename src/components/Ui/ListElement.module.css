@@ -18,9 +18,11 @@
   background-color: rgb(var(--dark-background-color), 0.6);
 }
 
+
 .exit {
   height: 1rem;
   padding: 0.5rem;
   filter: invert(100%);
   float: right;
 }
+
