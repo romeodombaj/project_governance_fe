@@ -26,7 +26,13 @@ const LineRequests = (props) => {
   const [selectedData, setSelectedData] = useState([]);
   const navigate = useNavigate();
 
-  const columnNames = ["index", "project name", "Group", "feature index", ""];
+  const columnNames = [
+    "index",
+    "project name",
+    "Skill",
+    "group",
+    "feature index",
+  ];
 
   useEffect(() => {
     if (lineCtx.currentManager) {
@@ -50,17 +56,19 @@ const LineRequests = (props) => {
 
     let tD = [];
 
-    for (let i in tDrops) {
+    /*for (let i in tDrops) {
       tD.push({
         skill: tDrops[i].name,
         employee: tDrops[i].value,
       });
-    }
+    }*/
 
     tempRequest = {
       ...tempRequest,
-      skills: tD,
+      employee: tDrops[0].value,
     };
+
+    console.log(tempRequest);
 
     tempRequest.approved = true;
 
@@ -81,42 +89,32 @@ const LineRequests = (props) => {
   };
 
   const onElementClick = async (e) => {
-    const index = e.target.getAttribute("index");
+    const index = e.currentTarget.getAttribute("index") - 1;
     setRequestIndex(index);
 
     const res = await getCriticalPath(
       `critical_paths/${requestList[index].projectId}`
     );
 
-    const feature = res[0].calculatedArray.filter(
-      (el) => el.i === requestList[requestIndex].featureIndex
+    const feature = res[0].calculatedArray.find(
+      (el) => el.featureIndex == requestList[index].featureIndex
     );
+
+    console.log(feature);
 
     let tempDrops = [];
 
     tempDrops = [
       {
-        name: feature[0].skill,
+        name: feature.skill,
         value: "",
         dataList: hrCtx.employeeList
-          .filter((el) => el.skills === feature[0].skill)
+          .filter((el) => el.skills === feature.skill)
           .map((e) => {
             return { name: e.name + " " + e.surname };
           }),
       },
     ];
-
-    /*for (let i in skills) {
-      tempDrops.push({
-        name: skills[i],
-        value: "",
-        dataList: hrCtx.employeeList
-          .filter((el) => el.skills === skills[i])
-          .map((e) => {
-            return { name: e.name + " " + e.surname };
-          }),
-      });
-    }*/
 
     setDrops(tempDrops);
     openForm();

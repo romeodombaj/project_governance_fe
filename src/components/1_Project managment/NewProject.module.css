@@ -1,12 +1,13 @@
 .wrapper {
+  margin: auto;
   position: relative;
   width: 30vw;
-  height: 30vh;
+  height: 500px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .separator {
@@ -17,10 +18,10 @@
 
 .form {
   position: relative;
-  margin: auto;
   display: flex;
+  width: 100%;
   flex-direction: column;
-  width: 70%;
+  align-items: center;
   padding: 5% 0;
 }
 

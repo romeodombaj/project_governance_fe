@@ -1,49 +1,58 @@
 import { useState } from "react";
 import Modal from "../../../Ui/Modal";
 import styles from "./EditActivity.module.css";
-import Input from "../../../Ui/Input";
-import Dropdown from "../../../Ui/Dropdown";
+import usePatchData from "../../../hooks/use-patch-data";
 import React from "react";
-
+import Button from "../../../Ui/Button";
+import { Fragment } from "react";
 const EditActivity = (props) => {
   const criticalData = props.criticalData;
   const requestData = props.requestData;
+  const index = props.index;
+  const selectedCtirical = props.criticalData.calculatedArray[index];
 
-  const [drop, setDrop] = useState("");
+  const patchData = usePatchData();
 
-  console.log("HERESA");
-  console.log(criticalData);
-  console.log(requestData);
+  const onComplete = () => {
+    let tempSelectedCritical = selectedCtirical;
+    let tempCritical = criticalData;
 
-  let skills = [];
+    tempSelectedCritical.finished = true;
 
-  /*if (requestData) {
-    skills = requestData.skills.filter(
-      (el) => el.skill === requestData.skills[props.index].skill
-    );
+    criticalData.calculatedArray[index] = tempSelectedCritical;
 
-    let tSkills = [];
-
-    for (let i in skills) {
-      tSkills.push({ name: skills[i].employee });
-    }
-
-    skills = tSkills;
-  }*/
-
-  console.log("SKILS");
-
-  const onDropChange = (e) => {
-    const value = e.target.value;
-    setDrop(value);
+    patchData(criticalData, `critical_paths/update/${criticalData._id}`);
   };
 
   return (
     <Modal onClose={props.onClose}>
       <div className={styles.wrapper}>
-        <div className={styles.title}>ACTIVITY NAME</div>
-        {skills.length > 0 && (
-          <Dropdown onChange={onDropChange} data={skills} />
+        <div className={styles.title}>{selectedCtirical.i}</div>
+        <div className={styles.devider} />
+        {requestData && requestData.approved && (
+          <Fragment>
+            <div>
+              <strong>Assigned employee: </strong> {requestData.employee}
+            </div>
+            <div>
+              <strong>Planed start date:</strong> {requestData.employee}
+            </div>
+          </Fragment>
+        )}
+        <div className={styles.devider} />
+
+        <div className={styles.devider} />
+
+        <div>
+          <strong>STATUS: </strong>
+          {selectedCtirical.finished ? "completed" : "in progress"}
+        </div>
+        <div className={styles.devider} />
+
+        {requestData && requestData.approved && !selectedCtirical.finished && (
+          <Button onClick={onComplete} isLight={true}>
+            Complete
+          </Button>
         )}
       </div>
     </Modal>

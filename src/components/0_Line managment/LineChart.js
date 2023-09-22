@@ -1,4 +1,7 @@
 import styles from "./LineChart.module.css";
+import { useEffect } from "react";
+import { useState } from "react";
+import LineContext from "../store/line-context";
 import React, { useContext } from "react";
 import {
   Chart as ChartJS,
@@ -9,8 +12,9 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { Radar } from "react-chartjs-2";
+import { Line, Radar } from "react-chartjs-2";
 import HumanResourcesContext from "../store/human-resources-context";
+import { useNavigate } from "react-router-dom";
 
 ChartJS.register(
   RadialLinearScale,
@@ -23,30 +27,71 @@ ChartJS.register(
 
 const LineChart = (props) => {
   const hrCtx = useContext(HumanResourcesContext);
+  const lineCtx = useContext(LineContext);
+  const navigate = useNavigate();
+  const [total, setTotal] = useState(1);
+  const [totalRequests, setTotalRequests] = useState(1);
+  const [selectedData, setSelectedData] = useState([]);
+  const [selectedData2, setSelectedData2] = useState([]);
 
-  const employees = hrCtx.employeeList;
+  useEffect(() => {
+    if (lineCtx.currentManager) {
+      let tempData = [];
 
-  const unique = [...new Set(employees.map((item) => item.skills))];
+      tempData = hrCtx.employeeList.filter(
+        (el) =>
+          el.groupName === lineCtx.currentManager.groupName &&
+          el.skills !== "line manager"
+      );
 
-  const count = employees.reduce((accumulator, value) => {
-    return {
-      ...accumulator,
-      [value]: (accumulator[value] || 0) + 1,
-    };
-  }, {});
+      //tempData = [...new Set(tempData.map((item) => item.skills))];
+      tempData = tempData.map((el) => el.skills);
+      setTotal(tempData.length);
+      const count = {};
 
-  console.log(employees);
-  console.log(unique);
-  console.log(count);
+      tempData.forEach((element) => {
+        count[element] = (count[element] || 0) + 1;
+      });
+      setSelectedData(count);
+    } else {
+      navigate("../");
+    }
+  }, [hrCtx.employeeList]);
+
+
+
+  useEffect(() => {
+    let tempData = [];
+    tempData = lineCtx.requestList.filter((el) => !el.approved);
+    tempData = tempData.map((el) => el.skill);
+    const count = {};
+
+    tempData.forEach((element) => {
+      count[element] = (count[element] || 0) + 1;
+    });
+    setSelectedData2(count);
+  }, [lineCtx.requestList]);
+
+  useEffect(() => {
+    console.log(selectedData);
+  }, [selectedData]);
 
   const data = {
-    labels: [...unique],
+    labels: [...Object.keys(selectedData)],
     datasets: [
       {
-        label: "# of Votes",
-        data: [5, 6, 9],
+        label: "People",
+        data: [...Object.values(selectedData).map((el) => (el / total) * 100)],
         backgroundColor: "rgba(255, 99, 132, 0.2)",
         borderColor: "rgba(255, 99, 132, 1)",
+        borderWidth: 1,
+      },
+
+      {
+        label: "Requests",
+        data: [...Object.values(selectedData2).map((el) => (el / total) * 100)],
+        backgroundColor: "rgba(255, 22, 1, 0.2)",
+        borderColor: "rgba(255, 22, 1, 1)",
         borderWidth: 1,
       },
     ],

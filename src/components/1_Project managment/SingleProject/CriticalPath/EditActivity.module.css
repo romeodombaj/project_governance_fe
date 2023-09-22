@@ -1,0 +1,15 @@
+.title {
+  color: whitesmoke;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.wrapper {
+  color: whitesmoke;
+  text-transform: capitalize;
+  font-size: 1.2em;
+}
+
+.devider {
+  height: 1rem;
+}

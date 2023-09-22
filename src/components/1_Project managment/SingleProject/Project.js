@@ -17,8 +17,9 @@ const Project = () => {
   const [criticalPathData, getCriticalPathData] = useGetData();
   const [positionRequest, getPositionRequest] = useGetData();
 
-  const getCriticalPath = () => {
-    getCriticalPathData(`critical_paths/${projectData._id}`);
+  const getCriticalPath = async () => {
+    const res = await getCriticalPathData(`critical_paths/${projectData._id}`);
+    return res;
   };
 
   const getRequest = () => {

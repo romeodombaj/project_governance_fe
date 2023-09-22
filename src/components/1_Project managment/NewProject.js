@@ -11,6 +11,7 @@ import Error from "../Ui/Error";
 
 const NewProject = (props) => {
   const [name, setName] = useState("");
+  const [date, setDate] = useState("");
   const [error, setError] = useState("");
 
   const postData = usePostData();
@@ -20,13 +21,17 @@ const NewProject = (props) => {
     setName(event.target.value);
   };
 
+  const onDateChange = (event) => {
+    setDate(event.target.value);
+  };
+
   const onSubmitHandler = (e) => {
     e.preventDefault();
 
-    if (name.length > 0) {
+    if (name.length > 0 && date.length === 10) {
       const data = {
         name: name,
-        projectManagerId: props.projectManagerId,
+        startDate: date,
       };
       postData(data, postPath).then((resp) => {
         if (resp.ok) {
@@ -47,6 +52,12 @@ const NewProject = (props) => {
           <div className={styles["separator"]} />
           <Input onChange={onNameChange} value={name} error={error} />
           <div className={styles["separator"]} />
+
+          <Label>Start date "YYYY-MM-DD"</Label>
+          <div className={styles["separator"]} />
+          <Input onChange={onDateChange} value={date} error={error} />
+          <div className={styles["separator"]} />
+
           <div className={styles["button-center"]}>
             <Button isLight={true} type="submit">
               Add new project

@@ -65,6 +65,11 @@ const ProjectInfo = (props) => {
       </div>
 
       <div className={styles["info-section"]}>
+        <div className={styles["info-predefined"]}>Start date:</div>
+        <div className={styles["info-line"]}>{projectData.startDate}</div>
+      </div>
+
+      <div className={styles["info-section"]}>
         <div className={styles["info-predefined"]}>
           Critical path generated:
         </div>

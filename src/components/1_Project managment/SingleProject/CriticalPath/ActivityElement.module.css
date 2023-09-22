@@ -1,4 +1,29 @@
 .wrapper {
+  position: relative;
+  padding: 1rem 0rem;
+  background-color: rgb(var(--light-background-color), 0.6);
+  backdrop-filter: blur(3px);
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  transition: 0.4s;
+  cursor: pointer;
+  height: 1.4rem;
+  z-index: 100;
+  color: whitesmoke;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.wrapper:hover {
+  background-color: rgb(var(--light-background-color), 0.8);
+}
+
+.variation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(-50%);
+  height: 1.4rem;
   padding: 1rem 0rem;
   background-color: rgb(var(--light-background-color), 0.4);
   backdrop-filter: blur(3px);
@@ -6,10 +31,7 @@
   border-radius: 0.5rem;
   transition: 0.4s;
   cursor: pointer;
-}
-
-.wrapper:hover {
-  background-color: rgb(var(--light-background-color), 0.6);
+  z-index: 90;
 }
 
 .done {

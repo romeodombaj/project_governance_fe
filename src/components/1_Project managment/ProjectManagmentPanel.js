@@ -17,7 +17,7 @@ const ProjectManagmentPanel = () => {
   const projectData = useGetData("project_managment/projects/");
   const navigate = useNavigate();
 
-  const managerList = hrCtx.employeeList.filter(
+  /*const managerList = hrCtx.employeeList.filter(
     (el) => el.skills === "project manager"
   );
 
@@ -26,21 +26,22 @@ const ProjectManagmentPanel = () => {
     navigate("projects");
   };
 
-  const onCloseDeadEnd = () => {};
+  const onCloseDeadEnd = () => {};*/
 
   useEffect(() => {
     navCtx.setCurrentPanelIndex("2");
+    navigate("projects");
   }, []);
 
   return (
     <Fragment>
-      {!prjCtx.currentManager && (
+      {/*!prjCtx.currentManager && (
         <SelectManager
           onClose={onCloseDeadEnd}
           onClick={onManagerSelect}
           data={managerList}
         />
-      )}
+      )*/}
       <PanelTemplate>
         <Outlet />
       </PanelTemplate>

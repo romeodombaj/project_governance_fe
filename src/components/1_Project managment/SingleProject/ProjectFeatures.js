@@ -67,7 +67,8 @@ const ProjectFeatures = (props) => {
 
   const generateCritical = async () => {
     const data = {
-      ...featureList,
+      startDate: projectData.startDate,
+      featureList: [...featureList],
     };
 
     const criticalId = props.criticalPathId;
@@ -75,22 +76,27 @@ const ProjectFeatures = (props) => {
       deleteData("", `critical_paths/delete/${criticalId}`);
     }
 
-    console.log("FEATURES");
-
     await postData(data, "critical_paths/add");
-    await props.getCriticalPath();
+    const res = await props.getCriticalPath();
 
+    console.log("NEKI");
+    console.log(res[0].calculatedArray[0].startDate);
     let reqData = [];
 
-    for (let i in data) {
+    for (let i in data.featureList) {
       reqData.push({
         projectId: projectData._id,
         name: projectData.name,
+        skill: featureList[i].skill,
         approved: false,
         groupName: featureList[i].groupName,
         featureIndex: i,
+        startDate: res[0].calculatedArray[i].startDate,
+        finishDate: res[0].calculatedArray[i].finishDate,
       });
     }
+    console.log("HELO");
+
     console.log(reqData);
     postData(reqData, "position_requests/addMany");
   };

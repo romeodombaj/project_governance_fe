@@ -18,7 +18,7 @@ const ProjectList = () => {
 
   const [selectedData, setSelectedData] = useState([]);
 
-  useEffect(() => {
+  /*useEffect(() => {
     if (prjCtx.currentManager) {
       setSelectedData(
         prjCtx.projectList.filter(
@@ -28,7 +28,7 @@ const ProjectList = () => {
     } else {
       navigate("../");
     }
-  }, [prjCtx.projectList]);
+  }, [prjCtx.projectList]);*/
 
   const onSearchHandler = (event) => {
     setSearchValue(event.target.value);
@@ -61,12 +61,7 @@ const ProjectList = () => {
 
   return (
     <Fragment>
-      {isCreatingNew && (
-        <NewProjectWindow
-          projectManagerId={prjCtx.currentManager._id}
-          onClose={onCloseNewProject}
-        />
-      )}
+      {isCreatingNew && <NewProjectWindow onClose={onCloseNewProject} />}
       <div className={styles.wrapper}>
         <div className={styles.title}>PROJECT MANAGMENT PANEL</div>
         <div className={styles[`project-actions-wrapper`]}>
@@ -82,8 +77,8 @@ const ProjectList = () => {
           </div>
         </div>
         <div className={styles[`project-list`]}>
-          {selectedData &&
-            selectedData.map((project) => {
+          {prjCtx.projectList &&
+            prjCtx.projectList.map((project) => {
               if (project.name.includes(searchValue)) {
                 return (
                   <div

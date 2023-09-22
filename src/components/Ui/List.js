@@ -42,7 +42,7 @@ const List = (props) => {
                   isEmployee={isEmployee}
                   key={i}
                   path={path}
-                  index={i}
+                  index={i + 1}
                   data={data[i]}
                   id={item._id}
                 />
