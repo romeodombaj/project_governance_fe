@@ -1,10 +1,11 @@
-import { useContext, useEffect, useState } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import styles from "./LineEmployees.module.css";
 import HumanResourcesContext from "../store/human-resources-context";
 import List from "../Ui/List";
 import React from "react";
 import LineContext from "../store/line-context";
 import { useNavigate } from "react-router-dom";
+import LineSchedule from "./LineSchedule";
 
 const LineEmployees = (props) => {
   const hrCtx = useContext(HumanResourcesContext);
@@ -31,17 +32,20 @@ const LineEmployees = (props) => {
   }, [hrCtx.employeeList]);
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.title}>Employee List</div>
-      <div className={styles.List}>
-        <List
-          columns={columnNames}
-          path={path}
-          data={selectedData}
-          search={search}
-        ></List>
+    <Fragment>
+      <div className={styles.wrapper}>
+        <div className={styles.title}>Employee List</div>
+        <div className={styles.List}>
+          <List
+            columns={columnNames}
+            path={path}
+            data={selectedData}
+            search={search}
+          ></List>
+        </div>
       </div>
-    </div>
+      <LineSchedule employeeList={selectedData} />
+    </Fragment>
   );
 };
 

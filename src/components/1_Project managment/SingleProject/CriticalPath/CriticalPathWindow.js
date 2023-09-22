@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import ActivityElement from "./ActivityElement";
 import styles from "./CriticalPathWindow.module.css";
 import EditActivity from "./EditActivity";
@@ -12,6 +12,7 @@ const CriticalPathWindow = (props) => {
 
   let columns = [];
   let max = 0;
+  let endDateMargin = 0;
 
   const editActivity = (e) => {
     const index = e.currentTarget.getAttribute("index");
@@ -33,6 +34,8 @@ const CriticalPathWindow = (props) => {
       ...criticalPathData.calculatedArray.map((el) => el.lastFinishTime)
     );
 
+    endDateMargin = max;
+
     max += 3;
 
     if (max < 60) {
@@ -41,12 +44,23 @@ const CriticalPathWindow = (props) => {
   }
 
   for (let i = 1; i < max; i++) {
+    let outputDate = "";
+    if (criticalPathData) {
+      let tempDate = new Date(criticalPathData.calculatedArray[0].startDate);
+      tempDate.setDate(tempDate.getDate() + i * 7);
+      outputDate = tempDate.getDate() + "/" + (tempDate.getMonth() + 1);
+    }
+
     columns.push(
-      <div
-        key={i}
-        style={{ left: `${i * 2}rem` }}
-        className={styles.line}
-      ></div>
+      <Fragment key={i}>
+        <div style={{ left: `${i * 4}rem` }} className={styles.line}></div>
+        <div
+          className={styles["background-dates"]}
+          style={{ left: `${i * 4 + 0.5}rem` }}
+        >
+          {outputDate}
+        </div>
+      </Fragment>
     );
   }
 
@@ -75,7 +89,28 @@ const CriticalPathWindow = (props) => {
                 );
               })}
           </div>
-          <div className={styles["background-lines"]}>{columns}</div>
+          <div className={styles["background-lines"]}>
+            {columns}
+            <div className={styles["start-border-line"]}></div>
+            <div
+              className={styles["end-border-line"]}
+              style={{ left: `${endDateMargin && endDateMargin * 4}rem` }}
+            ></div>
+            <div className={styles["start-date"]}>
+              {criticalPathData &&
+                criticalPathData.calculatedArray[0].startDate}
+            </div>
+            <div
+              className={styles["end-date"]}
+              style={{ left: `${endDateMargin && endDateMargin * 4 + 1}rem` }}
+            >
+              {criticalPathData &&
+                criticalPathData.calculatedArray[
+                  criticalPathData.calculatedArray.length - 1
+                ].finishDate}
+            </div>
+            <div className={styles["backgorund-dates"]}></div>
+          </div>
         </div>
       </div>
     </Fragment>

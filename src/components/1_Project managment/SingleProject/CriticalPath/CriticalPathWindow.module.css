@@ -26,6 +26,17 @@
   height: 100%;
 }
 
+.background-dates {
+  position: absolute;
+  color: rgb(245, 245, 245, 0.5);
+  z-index: 50;
+  bottom: -1rem;
+  left: 0;
+  width: fit-content;
+  font-size: 0.8em;
+  font-style: italic;
+}
+
 .activities {
   position: relative;
   width: 100%;
@@ -40,6 +51,43 @@
   z-index: 50;
   top: -2rem;
   left: 0;
+}
+
+.start-border-line {
+  position: absolute;
+  height: calc(100% + 4rem);
+  border: 2px solid rgba(var(--highlight-color), 0.4);
+  border-radius: 0.25rem;
+  z-index: 50;
+  top: -2rem;
+  left: 0;
+}
+
+.end-border-line {
+  position: absolute;
+  height: calc(100% + 4rem);
+  border: 2px solid rgb(176, 16, 16, 0.4);
+  border-radius: 0.25rem;
+  z-index: 50;
+  top: -2rem;
+  left: 0;
+}
+
+.start-date {
+  color: whitesmoke;
+  position: absolute;
+  top: -2rem;
+  left: 1rem;
+}
+
+.end-date {
+  color: whitesmoke;
+  position: absolute;
+  top: -2rem;
+  left: 1rem;
+}
+
+.background-dates {
 }
 
 @keyframes show-up {

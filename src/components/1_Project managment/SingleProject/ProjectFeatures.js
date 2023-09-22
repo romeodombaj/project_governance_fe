@@ -79,8 +79,6 @@ const ProjectFeatures = (props) => {
     await postData(data, "critical_paths/add");
     const res = await props.getCriticalPath();
 
-    console.log("NEKI");
-    console.log(res[0].calculatedArray[0].startDate);
     let reqData = [];
 
     for (let i in data.featureList) {
@@ -91,13 +89,12 @@ const ProjectFeatures = (props) => {
         approved: false,
         groupName: featureList[i].groupName,
         featureIndex: i,
+        featureName: res[0].calculatedArray[i].i,
         startDate: res[0].calculatedArray[i].startDate,
         finishDate: res[0].calculatedArray[i].finishDate,
       });
     }
-    console.log("HELO");
 
-    console.log(reqData);
     postData(reqData, "position_requests/addMany");
   };
 

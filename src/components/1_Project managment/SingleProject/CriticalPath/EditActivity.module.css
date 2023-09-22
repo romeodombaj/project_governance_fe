@@ -8,6 +8,9 @@
   color: whitesmoke;
   text-transform: capitalize;
   font-size: 1.2em;
+  background-color: rgb(var(--light-background-color));
+  padding: 1rem;
+  border-radius: 0.5rem;
 }
 
 .devider {

@@ -1,0 +1,26 @@
+.wrapper {
+  height: 85vh;
+  margin-top: 10vh;
+  background-color: whitesmoke;
+  width: 100%;
+  overflow: auto;
+  margin-bottom: 20vh;
+}
+
+.table {
+  border: 1px solid;
+  height: 100%;
+  width: calc(8 * 30rem);
+  table-layout: auto;
+}
+
+.th {
+  border: 1px solid;
+  width: 8rem;
+  background-color: rgb(var(--highlight-color), 0.4);
+}
+
+.td {
+  border: 1px solid;
+  width: 8rem;
+}
