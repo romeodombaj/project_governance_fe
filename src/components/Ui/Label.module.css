@@ -1,6 +1,6 @@
 .wrapper {
   color: rgb(var(--light-text-color));
-  font-size: 2em;
+  font-size: 1.5em;
   text-align: center;
   text-transform: uppercase;
 }

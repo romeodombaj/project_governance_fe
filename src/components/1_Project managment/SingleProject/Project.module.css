@@ -5,16 +5,16 @@
 .main {
   display: flex;
   flex-direction: row;
-  height: 90vh;
-  padding: 2rem;
+  padding: 0 2rem;
+  animation: show-up 0.5s;
 }
 
 .title {
-  margin-top: 3rem;
+  margin-top: 1rem;
   color: white;
   font-size: 3em;
   text-transform: uppercase;
-  margin-bottom: 2rem;
+  margin-bottom: 0.75rem;
   font-weight: bold;
 }
 
@@ -64,4 +64,43 @@
 .add-feature:hover {
   background-color: rgba(50, 50, 50, 0.53);
   cursor: pointer;
+}
+
+/* SMALL NAVBAR */
+.nav {
+  padding: 0.5rem;
+  margin: auto;
+  border-radius: 1rem;
+  background-color: rgb(var(--dark-background-color));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: fit-content;
+  margin-bottom: 1rem;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: whitesmoke;
+  gap: 0.5rem;
+}
+
+.nav-option {
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  height: 2rem;
+  background-color: rgb(var(--mid-background-color));
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+.nav-otpion-selected {
+  background-color: rgb(var(--highlight-color));
+}
+
+@keyframes show-up {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

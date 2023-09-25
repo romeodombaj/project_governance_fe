@@ -50,7 +50,6 @@ const FeatureForm = (props) => {
         });
       } else {
         const resp = await postData(data, postPath).then((resp) => {
-          console.log(resp);
           if (resp.ok) {
             props.onClose();
           }
@@ -72,7 +71,6 @@ const FeatureForm = (props) => {
 
     await deleteData(data, deletePath).then((resp) => {
       if (resp.ok) {
-        console.log(resp);
         props.onClose();
       }
     });

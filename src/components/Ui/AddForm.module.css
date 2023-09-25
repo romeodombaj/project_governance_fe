@@ -1,11 +1,13 @@
 .wrapper {
   margin-top: 2rem;
   height: fit-content;
+  max-height: 60vh;
   padding: 2rem 0;
   width: 90%;
   background-color: rgb(var(--dark-background-color));
   animation: show-up 0.4s;
   border-radius: 0.5rem;
+  overflow: auto;
 }
 
 .section {

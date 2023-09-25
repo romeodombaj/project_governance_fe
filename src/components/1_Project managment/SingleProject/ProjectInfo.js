@@ -70,6 +70,20 @@ const ProjectInfo = (props) => {
       </div>
 
       <div className={styles["info-section"]}>
+        <div className={styles["info-predefined"]}>End date:</div>
+        <div className={styles["info-line"]}>{projectData.endDate}</div>
+      </div>
+
+      {projectData.delay > 0 && (
+        <div className={styles["info-section"]}>
+          <div className={styles["info-predefined"]}>Delayed end date:</div>
+          <div className={styles["info-line"]}>
+            {projectData.delayedEndDate}
+          </div>
+        </div>
+      )}
+
+      <div className={styles["info-section"]}>
         <div className={styles["info-predefined"]}>
           Critical path generated:
         </div>

@@ -7,6 +7,7 @@ import ProjectContext from "../store/project-context";
 import React from "react";
 import HumanResourcesContext from "../store/human-resources-context";
 import { useNavigate } from "react-router-dom";
+import ScoreCard from "../Ui/ScoreCard";
 
 const ProjectList = () => {
   const [isCreatingNew, setIsCreatingNew] = useState(false);
@@ -88,6 +89,8 @@ const ProjectList = () => {
                     value={project._id}
                   >
                     {project.name}
+                    <div className={styles.delay}>{project.delay}w delay</div>
+                    <ScoreCard value={project.delay} />
                   </div>
                 );
               }

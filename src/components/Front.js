@@ -29,9 +29,9 @@ const Front = () => {
       <Link to="/project" className={styles.button}>
         Project Managment
       </Link>
-      <Link to="/process" className={styles.button}>
+      {/*<Link to="/process" className={styles.button}>
         Process Managment
-      </Link>
+  </Link>*/}
     </div>
   );
 };

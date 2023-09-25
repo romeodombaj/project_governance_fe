@@ -24,3 +24,7 @@
   border: 1px solid;
   width: 8rem;
 }
+
+.tagged {
+  background-color: gray;
+}

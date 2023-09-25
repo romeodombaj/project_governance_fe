@@ -58,8 +58,6 @@ const LineChart = (props) => {
     }
   }, [hrCtx.employeeList]);
 
-
-
   useEffect(() => {
     let tempData = [];
     tempData = lineCtx.requestList.filter((el) => !el.approved);
@@ -82,8 +80,8 @@ const LineChart = (props) => {
       {
         label: "People",
         data: [...Object.values(selectedData).map((el) => (el / total) * 100)],
-        backgroundColor: "rgba(255, 99, 132, 0.2)",
-        borderColor: "rgba(255, 99, 132, 1)",
+        backgroundColor: "rgba(0, 0, 255, 0.2)",
+        borderColor: "rgba(0, 0, 255, 1)",
         borderWidth: 1,
       },
 
@@ -99,7 +97,9 @@ const LineChart = (props) => {
 
   return (
     <div className={styles.wrapper}>
-      <Radar className={styles.chart} data={data} />
+      <div className={styles.chart}>
+        <Radar className={styles.chart} data={data} />
+      </div>
     </div>
   );
 };

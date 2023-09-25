@@ -1,10 +1,10 @@
 .wrapper {
   height: calc(75vh - 5rem);
-  width: calc(35% - 5rem);
+  width: calc(41% - 5rem);
   background-color: rgb(var(--light-background-color));
-  border-radius: 2rem;
+  border-radius: 0.75rem;
   padding: 2rem;
-  margin: 0.5rem;
+  margin: 0 0.5rem;
   transition: 0.3s;
 }
 
@@ -18,15 +18,13 @@
 
 .feature-list {
   width: 100%;
-  height: calc(56vh - 1rem);
-  margin-bottom: 2rem;
-  margin-top: 1rem;
+  height: calc(46vh - 1rem);
   padding: 1rem 0;
-  border-radius: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow-y: auto;
+  margin-bottom: 4vh;
 }
 
 .columns {
@@ -34,7 +32,7 @@
   padding: 1rem 0;
   background-color: rgb(var(--highlight-color));
   margin: auto;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   border-radius: 0.5rem;
   display: grid;
   grid-auto-flow: column;
@@ -45,3 +43,5 @@
   color: white;
   font-size: 1.4em;
 }
+
+

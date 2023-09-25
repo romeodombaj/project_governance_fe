@@ -11,8 +11,15 @@
   background-color: rgb(var(--light-background-color));
   padding: 1rem;
   border-radius: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .devider {
   height: 1rem;
+}
+
+.delay-wrapper {
+  margin-left: 4rem;
 }

@@ -3,11 +3,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
   overflow-y: auto;
 }
 
 .separator {
   height: 1rem;
+}
+
+.title {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: whitesmoke;
+  margin-bottom: 1rem;
 }

@@ -87,7 +87,13 @@ const LineSchedule = (props) => {
                   {item.employee.name} {item.employee.surname}
                 </td>
                 {item.work.map((e) => {
-                  return <td className={styles.td}>{e}</td>;
+                  return (
+                    <td
+                      className={`${styles.td} ${styles[e != "" &&  "tagged"]}`}
+                    >
+                      {e}
+                    </td>
+                  );
                 })}
               </tr>
             );

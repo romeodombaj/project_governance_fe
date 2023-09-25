@@ -32,6 +32,9 @@ const NewProject = (props) => {
       const data = {
         name: name,
         startDate: date,
+        endDate: date,
+        delay: 0,
+        delayedEndDate: 0,
       };
       postData(data, postPath).then((resp) => {
         if (resp.ok) {

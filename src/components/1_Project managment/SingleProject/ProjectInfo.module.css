@@ -2,14 +2,14 @@
   height: 50vh;
   width: calc(30% - 5rem);
   background-color: rgb(var(--light-background-color));
-  border-radius: 2rem;
-  padding: 2rem;
-  margin: 0.5rem;
+  border-radius: 0.75rem;
+  padding: 1rem 0rem;
+  margin: 0 0.5rem;
 }
 
 .info-section {
   width: 100%;
-  padding: 0.5rem 2rem;
+  padding: 0.5rem 1.5rem;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -19,7 +19,6 @@
 .info-predefined {
   color: whitesmoke;
   font-size: 1.1em;
-  margin-right: 2rem;
 }
 
 .info-line {

@@ -48,20 +48,13 @@ const LineRequests = (props) => {
   }, [lineCtx.requestList]);
 
   useEffect(() => {
-    lineCtx.fetchAllData();
-  }, []);
+    if (!isAssigning) {
+      lineCtx.fetchAllData();
+    }
+  }, [isAssigning]);
 
   const onFormSubmit = (tInputs, tDrops) => {
     let tempRequest = requestList[requestIndex];
-
-    let tD = [];
-
-    /*for (let i in tDrops) {
-      tD.push({
-        skill: tDrops[i].name,
-        employee: tDrops[i].value,
-      });
-    }*/
 
     tempRequest = {
       ...tempRequest,

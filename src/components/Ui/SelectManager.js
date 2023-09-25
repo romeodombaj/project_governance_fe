@@ -14,6 +14,7 @@ const SelectManager = (props) => {
   return (
     <Modal onClose={props.onClose}>
       <div className={styles.wrapper}>
+        <div className={styles.title}>Select Manager</div>
         {data &&
           data.map((item, i) => {
             return (

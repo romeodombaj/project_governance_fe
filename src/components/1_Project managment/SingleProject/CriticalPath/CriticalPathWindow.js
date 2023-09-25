@@ -13,6 +13,7 @@ const CriticalPathWindow = (props) => {
   let columns = [];
   let max = 0;
   let endDateMargin = 0;
+  let delay = 0;
 
   const editActivity = (e) => {
     const index = e.currentTarget.getAttribute("index");
@@ -35,6 +36,10 @@ const CriticalPathWindow = (props) => {
     );
 
     endDateMargin = max;
+    delay =
+      criticalPathData.calculatedArray[
+        criticalPathData.calculatedArray.length - 1
+      ].delay;
 
     max += 3;
 
@@ -93,9 +98,18 @@ const CriticalPathWindow = (props) => {
             {columns}
             <div className={styles["start-border-line"]}></div>
             <div
-              className={styles["end-border-line"]}
+              className={styles["border-line"]}
               style={{ left: `${endDateMargin && endDateMargin * 4}rem` }}
             ></div>
+            {delay != 0 && (
+              <div
+                className={styles["end-border-line"]}
+                style={{
+                  left: `${endDateMargin && endDateMargin * 4 + delay * 4}rem`,
+                }}
+              ></div>
+            )}
+
             <div className={styles["start-date"]}>
               {criticalPathData &&
                 criticalPathData.calculatedArray[0].startDate}
@@ -108,6 +122,17 @@ const CriticalPathWindow = (props) => {
                 criticalPathData.calculatedArray[
                   criticalPathData.calculatedArray.length - 1
                 ].finishDate}
+            </div>
+            <div
+              className={styles["delay-date"]}
+              style={{
+                left: `${endDateMargin && endDateMargin * 4 + 1}rem`,
+              }}
+            >
+              {criticalPathData &&
+                criticalPathData.calculatedArray[
+                  criticalPathData.calculatedArray.length - 1
+                ].finishDate + delay}
             </div>
             <div className={styles["backgorund-dates"]}></div>
           </div>
