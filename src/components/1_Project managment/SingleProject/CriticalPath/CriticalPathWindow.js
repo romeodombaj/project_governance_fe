@@ -9,6 +9,7 @@ const CriticalPathWindow = (props) => {
   const criticalPathData = props.criticalPathData;
   const requestData = props.requestData;
   const [activityIndex, setActivityIndex] = useState(0);
+  const projectData = props.projectData;
 
   let columns = [];
   let max = 0;
@@ -39,7 +40,7 @@ const CriticalPathWindow = (props) => {
     delay =
       criticalPathData.calculatedArray[
         criticalPathData.calculatedArray.length - 1
-      ].delay;
+      ].delay + max;
 
     max += 3;
 
@@ -105,7 +106,7 @@ const CriticalPathWindow = (props) => {
               <div
                 className={styles["end-border-line"]}
                 style={{
-                  left: `${endDateMargin && endDateMargin * 4 + delay * 4}rem`,
+                  left: `${delay && delay * 4}rem`,
                 }}
               ></div>
             )}
@@ -126,13 +127,10 @@ const CriticalPathWindow = (props) => {
             <div
               className={styles["delay-date"]}
               style={{
-                left: `${endDateMargin && endDateMargin * 4 + 1}rem`,
+                left: `${delay && delay * 4 + 1}rem`,
               }}
             >
-              {criticalPathData &&
-                criticalPathData.calculatedArray[
-                  criticalPathData.calculatedArray.length - 1
-                ].finishDate + delay}
+              {projectData && projectData.delayedEndDate}
             </div>
             <div className={styles["backgorund-dates"]}></div>
           </div>

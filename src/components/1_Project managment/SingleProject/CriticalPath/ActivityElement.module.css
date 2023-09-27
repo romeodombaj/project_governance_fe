@@ -64,6 +64,10 @@
   font-weight: bold;
 }
 
+.done {
+  background-color: rgb(var(--highlight-color), 0.8);
+}
+
 .done:hover {
   background-color: rgb(var(--highlight-color), 0.6);
 }

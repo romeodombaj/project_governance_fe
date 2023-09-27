@@ -113,6 +113,7 @@ const Project = () => {
           <CriticalPathWindow
             requestData={positionRequest}
             criticalPathData={criticalPathData[0]}
+            projectData={projectData}
           />
         ) : (
           <div

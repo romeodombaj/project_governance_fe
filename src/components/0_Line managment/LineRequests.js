@@ -32,6 +32,9 @@ const LineRequests = (props) => {
     "Skill",
     "group",
     "feature index",
+    "feature name",
+    "start date",
+    "end date",
   ];
 
   useEffect(() => {
