@@ -5,7 +5,9 @@ const useGetData = () => {
   const [data, setData] = useState([]);
 
   const getData = async (path) => {
-    let response = await fetch(`http://localhost:5000/${path}`);
+    let response = await fetch(
+      `https://project-governance-backend.vercel.app/${path}`
+    );
     let value = await response.json();
     setData(await value);
     return await value;
